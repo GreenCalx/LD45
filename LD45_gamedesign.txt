@@ -1,0 +1,46 @@
+
+START WITH NOTHING
+
+TOP/DOWN VIEW
+
+
+0.	CANVAS NOIR
+1.	PRESS SPACE : CARRE ROUGE APPARAIT + CARRE BLANC SHINY APPARAIT
+	INTERLUDE   : "Ohhh! shiny!!! if only i could control myself and go there."
+2.	PRESS CTRL  : PLAYER CONTROLABLE HAUT BAS GAUCHE DROITE 
+	INTERLUDE   : "Oh, il semblerait qu'on puisse controler avec ZQSD"
+3.	JOUEUR RAMASSE CARRE BLANC SHINY :
+	APPARITION MONDE FORME 1
+		Des atomes or whatnot qui gravitent qu'il faut éviter
+	UNE CROIX POP AVEC EN SON CENTRE UNE VIE ET AU BOUT D'UNE BRANCHE LE JOUEUR
+	ET AU BOUT D'UNE AUTRE UN AUTRE CARRE BLANC SHINY
+	Pas de collisiona vec le vide en perso forme 0
+4.	LE JOUEUR RAMASSE LA VIE ET PASSE FORME 1
+	> il acquiert la collision avec le vide
+5.	JOUEUR VA SUR LE CARRE BLANC
+6.	APPARITION MONDE FORME 2 :
+	SOL PARTOUT, GRAND? LABYRINTHE TRAVERSABLE FACILEMENT
+	SANS COLLISIONA VEC LES MURS CAR PERSO FORME 1
+	LAYERS D'AMBIANCE?
+7.	RAMASSER LA VIE AU MILIEU LABY PERSO PASSE FORME 2
+	> acquiert collisiona vec les murs
+8.	JOUEUR DOIT SORTIR DU LABY
+	EPREUVE I : LABYRINTHE
+	morph le labyrinthe en ramassant des shiny white blocs 
+	( et donc le monde FORME 2.1, 2.2, 2.3, etc.. )
+
+9.	LE JOUEUR DOIT PASSER DEVANT LA FUTUR ZONE DE RAVIN
+11.	IL CHILL ET RAMASSE DES TRUCS PR LE MONDE EN ALLANT A LA NOUVELLE VIE INDIQUEE
+12.	IL TROUVE LA VIE PERSO PASSE FORME 3
+	> acquiert le pouvoir de la langue qui permet de stick à des parois et passer les ravins
+13.	Il retourne à la zone vue préalablement et faire l'épreuve des ravins
+	EPREUVE II : RAVINS
+14.	IL TROUVE UNE VIE ET PASSE FORME 4
+	> acquiert le pouvoir de se battre avec sa langue et detrurie des trucs
+	pop d'enemis ?
+15.	
+16.	
+17.	BOSS DE FIN : REPRESENTATION DE L'ENERGIE VITALE DU MONDE
+	BOCAL AVEC TOUTES LES AMES OR SMTH QU'IL PROTEGE
+	QUAND TU LE BUTE ça INSUFFLE LA VIE DANS LE MONDE
+	
