@@ -39,7 +39,7 @@ TOP/DOWN VIEW
 	> acquiert le pouvoir de se battre avec sa langue et detrurie des trucs
 	pop d'enemis ?
 15.	
-16.	
+16.	EPREUVE III
 17.	BOSS DE FIN : REPRESENTATION DE L'ENERGIE VITALE DU MONDE
 	BOCAL AVEC TOUTES LES AMES OR SMTH QU'IL PROTEGE
 	QUAND TU LE BUTE ça INSUFFLE LA VIE DANS LE MONDE
