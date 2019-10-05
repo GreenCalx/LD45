@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.A))
         {
+            GameObject.Find("Main Camera").GetComponent<CameraController>().StartRippleEffect();
+
             acquired_void_collision = true;
             BC.enabled = true;
         }
