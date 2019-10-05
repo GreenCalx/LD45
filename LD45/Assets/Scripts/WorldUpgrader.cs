@@ -17,9 +17,11 @@ public class WorldUpgrader : MonoBehaviour
 
     private void activate()
     {
-        Debug.Log("activate");
-        if (!!world)
-            world.upgrade( isMajorUpgrade );
+        if (!!worldGO)
+        {
+            world = worldGO.GetComponent<World>();
+            world.upgrade(isMajorUpgrade);
+        }
 
         // Effect
         if (!!cameraController)
@@ -35,6 +37,7 @@ public class WorldUpgrader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        worldGO = GameObject.Find(Constants.WORLD_GO_ID);
         if (!!worldGO)
             world = worldGO.GetComponent<World>();
         cameraGO = GameObject.Find(Constants.CAMERA_GO_ID);
