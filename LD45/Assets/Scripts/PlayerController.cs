@@ -63,18 +63,12 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
-<<<<<<< HEAD
-        //Debug.Log(Button_Ctrl);
-=======
         if(Input.GetKeyDown(KeyCode.A))
         {
             GameObject go = GameObject.Find("Main Camera");
             CameraController cc = go.GetComponent<CameraController>();
             cc.StartRippleEffect();
         }
-    
-
->>>>>>> 85312f461f4ec84ca185b61e7e8d4383ede44400
 
         // > Check for player upgrade updates
         if ( Button_Space && !acquired_existence)
