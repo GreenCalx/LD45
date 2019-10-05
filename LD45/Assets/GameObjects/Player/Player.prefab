@@ -147,6 +147,8 @@ MonoBehaviour:
   acquired_existence: 0
   acquired_void_collision: 0
   acquired_all_collision: 0
+  acquired_tongue: 0
+  level: 0
   IsControllable: 0
   IsVisible: 0
   Speed: 100

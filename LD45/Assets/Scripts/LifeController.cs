@@ -22,6 +22,7 @@ public class LifeController : MonoBehaviour
         if (!!pc)
         {
             // player level up 
+            pc.levelUp();
 
             // effect ?
 
