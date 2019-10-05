@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     public bool acquired_existence      = false;
     public bool acquired_void_collision = false;
     public bool acquired_all_collision  = false;
+    public bool acquired_tongue         = false;
 
+    public int level = 0;
 
     // Movements
     public bool IsControllable = false;
@@ -34,6 +36,25 @@ public class PlayerController : MonoBehaviour
     private BoxCollider2D BC;
 
 
+    public void levelUp()
+    {
+        level++;
+        switch (level)
+        {
+            case 1:
+                acquired_void_collision = true;
+                break;
+            case 2:
+                acquired_all_collision = true;
+                break;
+            case 3:
+                acquired_tongue = true;
+                break;
+            default:
+                break;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +69,7 @@ public class PlayerController : MonoBehaviour
         }
 
         worldGO = GameObject.Find(Constants.WORLD_GO_ID);
-
+        level = 0;
     }
 
     // Update is called once per frame
