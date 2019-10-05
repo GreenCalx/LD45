@@ -14,22 +14,20 @@ public class World : MonoBehaviour
 
     public void upgrade( bool isMajorUpgrade )
     {
-        if (isMajorUpgrade)
-        {
-            this.world_state+=1;
-            Debug.Log(world_state);
-        }
-        else
-            this.world_substate += 1;
-
-        updateWorld();
-    }
-
-    public void updateWorld()
-    {
         worldBuilder = GetComponent<WorldBuilder>();
         if (!!worldBuilder)
-            worldBuilder.build(world_state, world_substate);
+        {
+            if (isMajorUpgrade)
+            {
+                world_state++;
+                worldBuilder.build_major(world_state);
+            }
+            else
+            {
+                world_substate++;
+                worldBuilder.build_minor(world_substate);
+            }
+        }
     }
 
     /// ------------ UNITY ------------

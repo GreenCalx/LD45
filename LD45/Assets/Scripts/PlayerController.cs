@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     // World effector
     public  GameObject  worldGO;
 
+    // UI Lnk
+    public GameObject UIGO;
+
     // Upgrade status
     public bool acquired_existence      = false;
     public bool acquired_void_collision = false;
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
 
         worldGO = GameObject.Find(Constants.WORLD_GO_ID);
         level = 0;
+        UIGO = GameObject.Find(Constants.UI_GO_ID);
     }
 
     // Update is called once per frame
@@ -105,7 +109,20 @@ public class PlayerController : MonoBehaviour
             WorldEvents worldEvents = worldGO.GetComponent<WorldEvents>();
             worldEvents.player_acquired();
             acquired_existence = true;
+
+            DialogController dc = UIGO.GetComponent<DialogController>();
+            if (!!dc)
+                dc.startExitenceLine();
         }
+
+        if ( Button_Ctrl && acquired_existence )
+        {
+            DialogController dc = UIGO.GetComponent<DialogController>();
+            if (!!dc)
+                dc.startControlLine();
+        }
+
+
     }//! Update
 
     private void FixedUpdate()
