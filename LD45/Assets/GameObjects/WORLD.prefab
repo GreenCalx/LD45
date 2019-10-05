@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587e157db862a774f9bc4dcc4f6144f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  world_state: 0
+  world_substate: 0
 --- !u!114 &463202264951347091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,7 +64,7 @@ MonoBehaviour:
   gridWorld1GO: {fileID: 5061766060702778869, guid: 2ea1898247111914da0d7361f4a29629,
     type: 3}
   gridWorld2GO: {fileID: 0}
-  currentGridWorld: {fileID: 0}
+  currentGridWorldGO: {fileID: 0}
 --- !u!114 &1137516684
 MonoBehaviour:
   m_ObjectHideFlags: 0

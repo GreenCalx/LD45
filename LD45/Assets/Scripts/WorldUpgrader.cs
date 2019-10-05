@@ -17,6 +17,7 @@ public class WorldUpgrader : MonoBehaviour
 
     private void activate()
     {
+        Debug.Log("activate");
         if (!!world)
             world.upgrade( isMajorUpgrade );
 

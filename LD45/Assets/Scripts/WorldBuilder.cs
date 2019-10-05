@@ -10,10 +10,10 @@ public class WorldBuilder : MonoBehaviour
 
     public GameObject currentGridWorldGO;
 
-    public void build( uint major_state, uint minor_state)
+    public void build( int major_state, int minor_state)
     {
         //clear old map
-        Destroy(currentGridWorldGO.gameObject);
+        Destroy( currentGridWorldGO.gameObject );
 
         // MAJOR STATE
         switch (major_state)
