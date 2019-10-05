@@ -7,6 +7,11 @@ using UnityEngine;
 [RequireComponent(typeof(Sprite))]
 public class PlayerController : MonoBehaviour
 {
+
+    // World effector
+    public  GameObject  worldGO;
+    private WorldEvents worldEvents;
+
     // Movements
     public bool IsControllable = false;
     public bool IsVisible = false;
@@ -22,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D RB2D;
     private SpriteRenderer SR;
     private BoxCollider2D BC;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +41,10 @@ public class PlayerController : MonoBehaviour
             SR.enabled = false;
             BC.enabled = false;
         }
+
+        // world
+        if (!!worldGO)
+            worldEvents = worldGO.GetComponent<WorldEvents>();
     }
 
     // Update is called once per frame
