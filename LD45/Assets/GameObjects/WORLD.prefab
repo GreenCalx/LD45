@@ -62,6 +62,7 @@ MonoBehaviour:
   gridWorld1GO: {fileID: 5061766060702778869, guid: 2ea1898247111914da0d7361f4a29629,
     type: 3}
   gridWorld2GO: {fileID: 0}
+  currentGridWorld: {fileID: 0}
 --- !u!114 &1137516684
 MonoBehaviour:
   m_ObjectHideFlags: 0

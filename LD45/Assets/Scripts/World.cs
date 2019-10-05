@@ -22,6 +22,7 @@ public class World : MonoBehaviour
 
     public void updateWorld()
     {
+        worldBuilder = GetComponent<WorldBuilder>();
         if (!!worldBuilder)
             worldBuilder.build(world_state, world_substate);
     }
@@ -31,6 +32,8 @@ public class World : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        world_state = 0;
+        world_substate = 0;
         worldBuilder = this.GetComponent<WorldBuilder>();
     }
 

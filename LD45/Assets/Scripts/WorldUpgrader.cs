@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class WorldUpgrader : MonoBehaviour
 {
-
+    // WORLD
     public GameObject worldGO;
     public bool isMajorUpgrade;
+
+    // CAMERA
+    private GameObject       cameraGO;
+    private CameraController cameraController;
+
 
     private World world;
 
@@ -15,7 +20,9 @@ public class WorldUpgrader : MonoBehaviour
         if (!!world)
             world.upgrade( isMajorUpgrade );
 
-        // Effects...
+        // Effect
+        if (!!cameraController)
+            cameraController.StartRippleEffect();
 
         // Destroy go
         Destroy(this.gameObject);
@@ -29,6 +36,9 @@ public class WorldUpgrader : MonoBehaviour
     {
         if (!!worldGO)
             world = worldGO.GetComponent<World>();
+        cameraGO = GameObject.Find(Constants.CAMERA_GO_ID);
+        if (!!cameraGO)
+            cameraController = cameraGO.GetComponent<CameraController>();
     }
 
     // Update is called once per frame
