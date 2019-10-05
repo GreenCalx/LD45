@@ -61,11 +61,10 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
-        
-        if(Input.GetKeyDown(KeyCode.A))
+        BC.enabled = true;
+        if (Input.GetKeyDown(KeyCode.A))
         {
             acquired_void_collision = true;
-            BC.enabled = true;
         }
         
 

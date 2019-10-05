@@ -14,9 +14,12 @@ public class WorldUpgrader : MonoBehaviour
 
 
     private World world;
+    private bool upgradeSpent = false;
 
     private void activate()
     {
+        upgradeSpent = true;
+
         if (!!worldGO)
         {
             world = worldGO.GetComponent<World>();
@@ -37,6 +40,7 @@ public class WorldUpgrader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        upgradeSpent = false;
         worldGO = GameObject.Find(Constants.WORLD_GO_ID);
         if (!!worldGO)
             world = worldGO.GetComponent<World>();
@@ -54,7 +58,7 @@ public class WorldUpgrader : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         PlayerController pc = collision.GetComponent<PlayerController>();
-        if (!!pc)
+        if (!!pc && !upgradeSpent) 
             activate();
          
     }
