@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
 
     // World effector
     public  GameObject  worldGO;
-    private WorldEvents worldEvents;
 
     // Upgrade status
     public bool acquired_existence      = false;
@@ -48,9 +47,8 @@ public class PlayerController : MonoBehaviour
             BC.enabled = false;
         }
 
-        // world
-        if (!!worldGO)
-            worldEvents = worldGO.GetComponent<WorldEvents>();
+        worldGO = GameObject.Find(Constants.WORLD_GO_ID);
+
     }
 
     // Update is called once per frame
@@ -73,8 +71,9 @@ public class PlayerController : MonoBehaviour
         */
 
         // > Check for player upgrade updates
-        if ( Button_Space && !acquired_existence)
+        if ( Button_Space && !acquired_existence && !!worldGO)
         {
+            WorldEvents worldEvents = worldGO.GetComponent<WorldEvents>();
             worldEvents.player_acquired();
             acquired_existence = true;
         }

@@ -201,10 +201,10 @@ PrefabInstance:
         type: 3}
       propertyPath: worldGO
       value: 
-      objectReference: {fileID: 1137516683}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7fb58e8bfef85942bda92c7150aa814, type: 3}
---- !u!1001 &862775836
+--- !u!1001 &1102449977
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -254,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 1669258235732381170, guid: f0adbd6c87b828b4788529b894763261,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1669258235732381170, guid: f0adbd6c87b828b4788529b894763261,
         type: 3}
@@ -271,14 +271,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8038174611304573428, guid: f0adbd6c87b828b4788529b894763261,
+        type: 3}
+      propertyPath: world_state
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0adbd6c87b828b4788529b894763261, type: 3}
---- !u!1 &1137516683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6744182305792319804, guid: f0adbd6c87b828b4788529b894763261,
-    type: 3}
-  m_PrefabInstance: {fileID: 862775836}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234979726 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6244170793693320346, guid: b7fb58e8bfef85942bda92c7150aa814,
@@ -351,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 6636362570178740123, guid: 47ef51e7a951e6e4bb4c7e5775ca5f93,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6636362570178740123, guid: 47ef51e7a951e6e4bb4c7e5775ca5f93,
         type: 3}

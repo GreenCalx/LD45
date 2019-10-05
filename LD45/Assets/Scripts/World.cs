@@ -15,9 +15,12 @@ public class World : MonoBehaviour
     public void upgrade( bool isMajorUpgrade )
     {
         if (isMajorUpgrade)
-        { world_state++; Debug.Log(world_state); }
+        {
+            this.world_state+=1;
+            Debug.Log(world_state);
+        }
         else
-            world_substate++;
+            this.world_substate += 1;
 
         updateWorld();
     }
