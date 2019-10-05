@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 629413762}
   - component: {fileID: 629413761}
   - component: {fileID: 629413760}
+  - component: {fileID: 629413763}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -1109,7 +1110,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 25
+      value: 50
       mode: 0
       spread: 0
       speed:
@@ -1281,7 +1282,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2117,7 +2118,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0
-      minScalar: 1.125
+      minScalar: 1.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2169,7 +2170,7 @@ ParticleSystem:
     orbitalOffsetX:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.025
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -2381,7 +2382,7 @@ ParticleSystem:
     speedModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -2653,7 +2654,7 @@ ParticleSystem:
     randomizePerFrame: 0
   ExternalForcesModule:
     serializedVersion: 2
-    enabled: 1
+    enabled: 0
     multiplierCurve:
       serializedVersion: 2
       minMaxState: 0
@@ -5067,6 +5068,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &629413763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629413759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2843f8e76ea66c142a912a30d7758166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6244170792693638910
 PrefabInstance:
   m_ObjectHideFlags: 0

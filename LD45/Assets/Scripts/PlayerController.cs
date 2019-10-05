@@ -61,14 +61,13 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
-        /*
+        
         if(Input.GetKeyDown(KeyCode.A))
         {
-            GameObject go = GameObject.Find("Main Camera");
-            CameraController cc = go.GetComponent<CameraController>();
-            cc.StartRippleEffect();
+            acquired_void_collision = true;
+            BC.enabled = true;
         }
-        */
+        
 
         // > Check for player upgrade updates
         if ( Button_Space && !acquired_existence && !!worldGO)
@@ -77,7 +76,6 @@ public class PlayerController : MonoBehaviour
             worldEvents.player_acquired();
             acquired_existence = true;
         }
-
     }//! Update
 
     private void FixedUpdate()
