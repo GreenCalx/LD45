@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
-        Debug.Log(Button_Ctrl);
+        //Debug.Log(Button_Ctrl);
 
         // > Check for player upgrade updates
         if ( Button_Space && !acquired_existence)

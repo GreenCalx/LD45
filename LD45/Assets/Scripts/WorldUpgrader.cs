@@ -14,6 +14,11 @@ public class WorldUpgrader : MonoBehaviour
     {
         if (!!world)
             world.upgrade( isMajorUpgrade );
+
+        // Effects...
+
+        // Destroy go
+        Destroy(this.gameObject);
     }
 
 
@@ -34,7 +39,6 @@ public class WorldUpgrader : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         PlayerController pc = collision.GetComponent<PlayerController>();
         if (!!pc)
             activate();
