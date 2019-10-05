@@ -7,6 +7,17 @@ using UnityEngine;
 [RequireComponent(typeof(Sprite))]
 public class PlayerController : MonoBehaviour
 {
+
+    // World effector
+    public  GameObject  worldGO;
+    private WorldEvents worldEvents;
+
+    // Upgrade status
+    public bool acquired_existence      = false;
+    public bool acquired_void_collision = false;
+    public bool acquired_all_collision  = false;
+
+
     // Movements
     public bool IsControllable = false;
     public bool IsVisible = false;
@@ -22,6 +33,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D RB2D;
     private SpriteRenderer SR;
     private BoxCollider2D BC;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +47,10 @@ public class PlayerController : MonoBehaviour
             SR.enabled = false;
             BC.enabled = false;
         }
+
+        // world
+        if (!!worldGO)
+            worldEvents = worldGO.GetComponent<WorldEvents>();
     }
 
     // Update is called once per frame
@@ -46,8 +63,26 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
-        Debug.Log(Button_Ctrl);
+<<<<<<< HEAD
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            GameObject go = GameObject.Find("Main Camera");
+            CameraController cc = go.GetComponent<CameraController>();
+            cc.StartRippleEffect();
+        }
     }
+=======
+        Debug.Log(Button_Ctrl);
+
+        // > Check for player upgrade updates
+        if ( Button_Space && !acquired_existence)
+        {
+            worldEvents.player_acquired();
+            acquired_existence = true;
+        }
+
+    }//! Update
+>>>>>>> e081fbf82ec607e6f0dff64b80ef43ee7c7a4995
 
     private void FixedUpdate()
     {
