@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Sprite))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
 
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D RB2D;
     private SpriteRenderer SR;
     private BoxCollider2D BC;
-
+    private Animator Animator;
 
     public void levelUp()
     {
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
+
+        Animator.SetInteger("Form", level);
     }
 
     // Start is called before the first frame update
@@ -61,6 +64,7 @@ public class PlayerController : MonoBehaviour
         RB2D = GetComponent<Rigidbody2D>();
         SR = GetComponent<SpriteRenderer>();
         BC = GetComponent<BoxCollider2D>();
+        Animator = GetComponent<Animator>();
 
         if(!IsVisible)
         {
@@ -79,17 +83,21 @@ public class PlayerController : MonoBehaviour
         MoveX = Input.GetAxis("Horizontal");
         MoveY = Input.GetAxis("Vertical");
 
+        if(MoveX != 0 && MoveX < 0)
+        {
+            SR.flipX = true;
+        } else if(MoveX != 0)
+        {
+            SR.flipX = false;
+        }
+
+        Animator.SetFloat("PlayerX", MoveX);
+        Animator.SetFloat("PlayerY", MoveY);
+
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
-        BC.enabled = true;
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GameObject.Find("Main Camera").GetComponent<CameraController>().StartRippleEffect();
-
-            acquired_void_collision = true;
-        }
-        
+        BC.enabled = true;        
 
         // > Check for player upgrade updates
         if ( Button_Space && !acquired_existence && !!worldGO)
@@ -106,6 +114,7 @@ public class PlayerController : MonoBehaviour
         if (IsControllable)
         {
             RB2D.velocity = new Vector2(MoveX * Time.deltaTime * Speed, MoveY * Time.deltaTime * Speed);
+            
         }
         if(IsVisible && Button_Ctrl)
         {
