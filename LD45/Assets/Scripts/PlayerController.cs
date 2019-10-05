@@ -12,6 +12,12 @@ public class PlayerController : MonoBehaviour
     public  GameObject  worldGO;
     private WorldEvents worldEvents;
 
+    // Upgrade status
+    public bool acquired_existence      = false;
+    public bool acquired_void_collision = false;
+    public bool acquired_all_collision  = false;
+
+
     // Movements
     public bool IsControllable = false;
     public bool IsVisible = false;
@@ -58,7 +64,15 @@ public class PlayerController : MonoBehaviour
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
         Debug.Log(Button_Ctrl);
-    }
+
+        // > Check for player upgrade updates
+        if ( Button_Space && !acquired_existence)
+        {
+            worldEvents.player_acquired();
+            acquired_existence = true;
+        }
+
+    }//! Update
 
     private void FixedUpdate()
     {
