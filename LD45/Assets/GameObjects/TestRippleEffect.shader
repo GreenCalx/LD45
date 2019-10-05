@@ -1,8 +1,8 @@
 ﻿Shader "Unlit/TestRippleEffect" {
 	Properties{
 		_MainTex("Base (RGB)", 2D) = "white" {}
-		_Annulus("Annulus Radius", Float) = 1 // An annulus is the 2D version of a Torus. This is the inside radius, in local coordinates
-		_MaxRange("Outer Radius", Float) = 1 //outer radius, in local coordinates
+		_Annulus("Annulus Radius", Float) = 1 
+		_MaxRange("Outer Radius", Float) = 1 
 		_DistortionStrength("DistortionStrength", Float) = 1
 	}
 		SubShader{
@@ -13,7 +13,6 @@
 				#include "UnityCG.cginc"
 
 				uniform sampler2D _MainTex;
-				uniform sampler2D _MaskTex;
 
 				half _Annulus;
 				half _MaxRange;
@@ -29,10 +28,14 @@
 					   dist = dist * dist; //nonlinear distribution, so it's not just magnifying stuff. Also makes the transition smooth on the inside of the annulus, but sharp on the outside
 					   return tex2D(_MainTex, (i.uv-0.5) + dist * _DistortionStrength * normalize(i.uv - 0.5)); //our uv, but shifted outwards (in local space)
 				   }
-				   else
+				   else if (dist > 0)
 				   {
+					   return half4(0, 0, 0, 0);  
+				   }
+				   else {
 					   return tex2D(_MainTex, i.uv); //no distortion
 				   }
+
 				}
 				ENDCG
 			}
