@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
 
     // World effector
     public  GameObject  worldGO;
-    private WorldEvents worldEvents;
 
     // Upgrade status
     public bool acquired_existence      = false;
@@ -48,9 +47,8 @@ public class PlayerController : MonoBehaviour
             BC.enabled = false;
         }
 
-        // world
-        if (!!worldGO)
-            worldEvents = worldGO.GetComponent<WorldEvents>();
+        worldGO = GameObject.Find(Constants.WORLD_GO_ID);
+
     }
 
     // Update is called once per frame
@@ -63,16 +61,19 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
 
+        /*
         if(Input.GetKeyDown(KeyCode.A))
         {
             GameObject go = GameObject.Find("Main Camera");
             CameraController cc = go.GetComponent<CameraController>();
             cc.StartRippleEffect();
         }
+        */
 
         // > Check for player upgrade updates
-        if ( Button_Space && !acquired_existence)
+        if ( Button_Space && !acquired_existence && !!worldGO)
         {
+            WorldEvents worldEvents = worldGO.GetComponent<WorldEvents>();
             worldEvents.player_acquired();
             acquired_existence = true;
         }

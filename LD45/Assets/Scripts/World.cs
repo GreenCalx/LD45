@@ -7,21 +7,27 @@ public class World : MonoBehaviour
     private WorldBuilder worldBuilder;
 
     // Main Layers modifications
-    private uint world_state { get; set; }
+    public int world_state = 0;
 
     // Secondary ( Graphical ) layers modifications
-    private uint world_substate { get; set; }
+    public int world_substate = 0;
 
     public void upgrade( bool isMajorUpgrade )
     {
-        if (isMajorUpgrade) world_state++;
-        else world_substate++;
+        if (isMajorUpgrade)
+        {
+            this.world_state+=1;
+            Debug.Log(world_state);
+        }
+        else
+            this.world_substate += 1;
 
         updateWorld();
     }
 
     public void updateWorld()
     {
+        worldBuilder = GetComponent<WorldBuilder>();
         if (!!worldBuilder)
             worldBuilder.build(world_state, world_substate);
     }
@@ -31,6 +37,8 @@ public class World : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        world_state     = 0;
+        world_substate  = 0;
         worldBuilder = this.GetComponent<WorldBuilder>();
     }
 

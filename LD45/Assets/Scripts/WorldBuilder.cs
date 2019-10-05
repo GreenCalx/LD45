@@ -8,19 +8,24 @@ public class WorldBuilder : MonoBehaviour
     public GameObject gridWorld1GO;
     public GameObject gridWorld2GO;
 
-    private GameObject currentGridWorld;
+    public GameObject currentGridWorldGO;
 
-    public void build( uint major_state, uint minor_state)
+    public void build( int major_state, int minor_state)
     {
+        //clear old map
+        Destroy( currentGridWorldGO.gameObject );
 
         // MAJOR STATE
         switch (major_state)
         {
+            case 0:
+                currentGridWorldGO = Instantiate(gridWorld0GO);
+                break;
             case 1:
-                currentGridWorld = gridWorld1GO;
+                currentGridWorldGO = Instantiate(gridWorld1GO);
                 break;
             case 2:
-                currentGridWorld = gridWorld2GO;
+                currentGridWorldGO = Instantiate(gridWorld2GO);
                 break;
             default:
                 break;
@@ -39,8 +44,7 @@ public class WorldBuilder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!!gridWorld0GO)
-            currentGridWorld = gridWorld0GO;
+        build( 0, 0);
 
     }
 

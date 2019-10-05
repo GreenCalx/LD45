@@ -16,6 +16,7 @@ public class CameraController : MonoBehaviour
 
     public void StartRippleEffect()
     {
+        RE = GetComponent<RippleEffect>();
         RE.enabled = true;
     }
 

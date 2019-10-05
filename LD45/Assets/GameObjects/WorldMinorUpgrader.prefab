@@ -93,5 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec181917711a72440b24bc04a285ebda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldGO: {fileID: 0}
+  worldGO: {fileID: 6744182305792319804, guid: f0adbd6c87b828b4788529b894763261, type: 3}
   isMajorUpgrade: 0
+  cameraGO: {fileID: 8453073853063046892, guid: 6bbe36c2a35ec85498e71047cb603d6f,
+    type: 3}
+  cameraController: {fileID: 0}
