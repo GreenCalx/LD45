@@ -34,7 +34,8 @@ public class TongueTipBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsAttacking) 
+        if (!GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsAttacking
+            && GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsTranslating) 
            transform.position = GameObject.Find(Constants.PLAYER_GO_ID).transform.position;
     }
 }

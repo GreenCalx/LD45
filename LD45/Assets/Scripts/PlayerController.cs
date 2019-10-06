@@ -34,10 +34,12 @@ public class PlayerController : MonoBehaviour
     private float AttackCounter;
     private Vector2 TongueHitPosition;
     private Vector2 AttackDirection;
+    private Vector2 LastCollisionDirection;
     public float tongue_speed = 1;
     private LineRenderer LR;
     public bool IsAttacking = false;
     public bool IsFirstAttackFrame = false;
+    public bool OncePerFrame = true;
     public bool IsTranslating = false;
     public bool IsDamaging = false;
     public bool IsDamaged = false;
@@ -87,7 +89,7 @@ public class PlayerController : MonoBehaviour
         // Reset attacks value
         IsAttacking = false;
         IsControllable = true;
-        IsTranslating = false;
+        //IsTranslating = false; Attacking = false when translating= true
         IsFirstAttackFrame = false;
         AttackCounter = 0;
         // Reset tongue tip values
@@ -130,11 +132,13 @@ public class PlayerController : MonoBehaviour
 
     public void TongueHit(Vector2 Position)
     {
-        if (!IsTranslating) // Avoid hit duplication
+        Debug.Log("Player: TongueHit!");
+        //if (!IsTranslating) // Avoid hit duplication
         {
             // Start translation to the TonguthitPosition
             IsTranslating = true;
             IsControllable = false; // Should laready be but just in case
+            IsAttacking = false;
             TongueHitPosition = Position;
             // Should probably be in FixedUpdate
             RB2D.velocity = (TongueHitPosition - new Vector2(transform.position.x, transform.position.y)).normalized * Speed * Time.deltaTime;
@@ -143,32 +147,35 @@ public class PlayerController : MonoBehaviour
 
     public void StartAttack()
     {
-        IsAttacking = true;
-        IsControllable = false;
-        LR.enabled = true;
+        Debug.Log("Player : SartAttack()");
+        if (!IsTranslating)
+        {
+            IsAttacking = true;
+            IsControllable = false;
+            LR.enabled = true;
 
-        AttackCounter = 0;
-        IsFirstAttackFrame = true;
-        if (Player_Facing_Direction == 0)
-        {
-            AttackDirection = new Vector2(1, 0);
+            AttackCounter = 0;
+            IsFirstAttackFrame = true;
+            if (Player_Facing_Direction == 0)
+            {
+                AttackDirection = new Vector2(1, 0);
+            }
+            if (Player_Facing_Direction == 1)
+            {
+                AttackDirection = new Vector2(-1, 0);
+            }
+            if (Player_Facing_Direction == 2)
+            {
+                AttackDirection = new Vector2(0, 1);
+            }
+            if (Player_Facing_Direction == 3)
+            {
+                AttackDirection = new Vector2(0, -1);
+            }
+            TongueTip.transform.position = RB2D.transform.position;
+            TongueTip.GetComponent<Rigidbody2D>().velocity = AttackDirection * tongue_speed;
+            RB2D.velocity = new Vector2(0, 0);
         }
-        if (Player_Facing_Direction == 1)
-        {
-            AttackDirection = new Vector2(-1, 0);
-        }
-        if (Player_Facing_Direction == 2)
-        {
-            AttackDirection = new Vector2(0, 1);
-        }
-        if (Player_Facing_Direction == 3)
-        {
-            AttackDirection = new Vector2(0, -1);
-        }
-        TongueTip.transform.position = RB2D.transform.position;
-        TongueTip.GetComponent<Rigidbody2D>().velocity = AttackDirection * tongue_speed;
-        RB2D.velocity = new Vector2(0, 0);
-
     }
 
     public void ReturnTongue()
@@ -178,14 +185,47 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        // If we were translating after a tongue hit then we reset the player state
-        if(IsTranslating)
+        Debug.Log("Player: On collision enter, collider = " + collision.gameObject.name);
+        if (OncePerFrame)
         {
-            IsDamageable = true;
-            immunity_timer = 0;
-            ResetAttack();  
+            Debug.Log("Player: On collision enter, collider = " + collision.gameObject.name + " ONCE");
+            // If we were translating after a tongue hit then we reset the player state
+            if (IsTranslating)
+            {
+                IsDamageable = true;
+                immunity_timer = 0;
+                ResetAttack();
+                Debug.Log("Player: On collision enter  => Reset Attack");
+                IsTranslating = false;
+                LastCollisionDirection = -AttackDirection.normalized;
+                transform.position = transform.position - new Vector3(0.1F * AttackDirection.normalized.x, 0.1F * AttackDirection.normalized.y, 0);
+            }
+            OncePerFrame = false;
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Debug.Log("Player: On collision stay, collider = " + collision.gameObject.name);
+        if (OncePerFrame)
+        {
+            Debug.Log("Player: On collision stay, collider = " + collision.gameObject.name + " ONCE");
+            // If we were translating after a tongue hit then we reset the player state
+            if (IsTranslating)
+            {
+                IsDamageable = true;
+                immunity_timer = 0;
+                ResetAttack();
+                Debug.Log("Player: On collision stay  => Reset Attack");
+                IsTranslating = false;
+                LastCollisionDirection = -AttackDirection.normalized;
+                transform.position = transform.position - new Vector3(0.2F * AttackDirection.normalized.x, 0.2F * AttackDirection.normalized.y, 0);
+            }
+            OncePerFrame = false;
+        }
+        //transform.position = transform.position - new Vector3(0.1F * LastCollisionDirection.x, 0.1F * LastCollisionDirection.y, 0);
+    }
+
     void ComputeFacingDirection()
     {
         if (Player_Facing_Direction == 0)
@@ -252,6 +292,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        OncePerFrame = true;
         // check if dead
         if (hp <= 0)
             dead();
@@ -326,9 +367,11 @@ public class PlayerController : MonoBehaviour
 
             AttackCounter += Time.deltaTime;
             // If Attack is ending
-            if(AttackCounter > AttackTime && !IsTranslating)
+            Debug.Log("Update : Attack counter " + AttackCounter);
+            if(AttackCounter > AttackTime)
             {
                 ResetAttack();
+                Debug.Log("Update : ResetAttack!");
             }
 
             if (AttackCounter > AttackTime / 2F)
@@ -345,7 +388,7 @@ public class PlayerController : MonoBehaviour
             TongueTip.transform.position = TongueHitPosition; 
         }
 
-        if (!IsAttacking && Input.GetKeyDown(KeyCode.K))
+        if (!IsAttacking && !IsTranslating && Input.GetKeyDown(KeyCode.K))
         {
             // Test attack
             StartAttack();

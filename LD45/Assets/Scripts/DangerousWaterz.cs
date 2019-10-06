@@ -35,10 +35,14 @@ public class DangerousWaterz : MonoBehaviour
     {
         if (IsRunning)
         {
-            if (!GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsTranslating)
+            if (!GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsTranslating
+                && !GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsAttacking)
                 currentTime += Time.deltaTime;
             else
+            {
                 currentTime = 0;
+                IsRunning = false;
+            }
             if (currentTime > KillTimer)
             {
                 GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().dead();
