@@ -7,13 +7,13 @@ public class BossBehaviour : MonoBehaviour
     public bool casting_spell_1 = false;
     public bool casting_spell_2 = false;
 
-    const float waitTime = 4f;
-    float elapsedTime = 0f;
+    public const float waitTime = 3f;
+    public float elapsedTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        elapsedTime = 0f;
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class BossBehaviour : MonoBehaviour
     {
         // Boss choose what do
         float whatdo = Random.Range(0f, 1f);
-        if (whatdo < 0.25f)
+        if (whatdo <= 0.25f)
         {
             dashToPlayer();
         }

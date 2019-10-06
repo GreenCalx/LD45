@@ -8,18 +8,24 @@ public class SpiritNoCollidHandler : MonoBehaviour
     public bool defaultState = true;
 
     GameObject playerGO;
+    GameObject worldGO;
     private int stored_player_level;
+    private int stored_world_level;
 
     // Start is called before the first frame update
     void Start()
     {
         playerGO = GameObject.Find(Constants.PLAYER_GO_ID);
-        if (!!playerGO)
+        worldGO = GameObject.Find(Constants.WORLD_GO_ID);
+
+        if (!!playerGO && !!worldGO)
         {
             PlayerController pc = playerGO.GetComponent<PlayerController>();
-            if (!!pc)
+            World w = worldGO.GetComponent<World>();
+            if (!!pc && !!w)
             {
                 stored_player_level = pc.level;
+                stored_world_level = w.world_state + w.world_substate;
                 enableAllCollisionButVoid(defaultState);
             }
         }
@@ -29,12 +35,15 @@ public class SpiritNoCollidHandler : MonoBehaviour
     void Update()
     {
         // check player level
-        if (!!playerGO)
+        if (!!playerGO && !!worldGO)
         {
             PlayerController pc = playerGO.GetComponent<PlayerController>();
-            if (!!pc)
+            World w = worldGO.GetComponent<World>();
+            if (!!pc && !!w)
             {
-                if ( stored_player_level != pc.level) // PLAYER LEVELD UP
+                bool player_level_up = (stored_player_level != pc.level) ;
+                bool world_level_up = ( stored_world_level != (w.world_state + w.world_substate) );
+                if ( player_level_up || world_level_up ) 
                 {
                     if (pc.isSpirit()) // SPIRIT
                         enableAllCollisionButVoid(false);
@@ -43,7 +52,7 @@ public class SpiritNoCollidHandler : MonoBehaviour
                 }
 
                 stored_player_level = pc.level;
-
+                stored_world_level = w.world_state + w.world_substate;
             }
         }
 
