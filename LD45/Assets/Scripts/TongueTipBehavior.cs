@@ -18,7 +18,7 @@ public class TongueTipBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //If we are not a Player we then hit either an ennemy or a wall
-        if (!collision.gameObject.GetComponent<PlayerController>())
+        if (!collision.gameObject.GetComponent<PlayerController>() && !collision.isTrigger)
         {
             // Stop at the hit position
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);

@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     // Stats
     public int level = 0;
     public int hp = 1;
+    public float immunity = 0.5F;
+    private float immunity_timer = 0;
 
     // Movements
     public bool IsControllable = false;
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour
     public bool IsTranslating = false;
     public bool IsDamaging = false;
     public bool IsDamaged = false;
+    public bool IsDamageable = true;
     // Inputs
     private float MoveX = 0;
     private float MoveY = 0;
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour
     public void dead()
     {
         // GAME OVER
+        Destroy(gameObject);
     }
 
     public void ResetAttack()
@@ -177,6 +181,8 @@ public class PlayerController : MonoBehaviour
         // If we were translating after a tongue hit then we reset the player state
         if(IsTranslating)
         {
+            IsDamageable = true;
+            immunity_timer = 0;
             ResetAttack();  
         }
     }
@@ -249,6 +255,15 @@ public class PlayerController : MonoBehaviour
         // check if dead
         if (hp <= 0)
             dead();
+
+        if(IsDamageable)
+        {
+            immunity_timer += Time.deltaTime;
+            if( immunity_timer > immunity)
+            {
+
+            }
+        }
 
         // Get inputs
         MoveX = Input.GetAxisRaw("Horizontal");
