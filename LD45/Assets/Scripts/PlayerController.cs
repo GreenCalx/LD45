@@ -8,13 +8,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
-
     // World effector
     public  GameObject  worldGO;
-
     // UI Lnk
     public GameObject UIGO;
-
     // Upgrade status
     public bool acquired_existence      = false;
     public bool acquired_void_collision = false;
@@ -22,22 +19,35 @@ public class PlayerController : MonoBehaviour
     public bool acquired_tongue         = false;
 
     public int level = 0;
-
     // Movements
     public bool IsControllable = false;
     public bool IsVisible = false;
     public float Speed = 100;
-
+    // Tongue / Attack
+    public GameObject TongueTip;
+    public float AttackTime;
+    private float AttackCounter;
+    private Vector2 TongueHitPosition;
+    private Vector2 AttackDirection;
+    public float tongue_speed = 1;
+    private LineRenderer LR;
+    public bool IsAttacking = false;
+    public bool IsFirstAttackFrame = false;
+    public bool IsTranslating = false;
+    public bool IsDamaging = false;
+    public bool IsDamaged = false;
     // Inputs
     private float MoveX = 0;
     private float MoveY = 0;
     private bool Button_Space;
     private bool Button_Ctrl;
-
+    private bool Button_Attack;
+    public int Player_Facing_Direction; // 0 = Right, 1 = Left, 2 = Up, 3 = Down 
     // Physics
     private Rigidbody2D RB2D;
     private SpriteRenderer SR;
     private BoxCollider2D BC;
+    // Animation
     private Animator Animator;
 
     public void levelUp()
@@ -57,8 +67,31 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-
         Animator.SetInteger("Form", level);
+    }
+
+    public void ResetAttack()
+    {
+        // Reset attacks value
+        IsAttacking = false;
+        IsControllable = true;
+        IsTranslating = false;
+        IsFirstAttackFrame = false;
+        AttackCounter = 0;
+        // Reset tongue tip values
+        TongueTip.transform.localPosition = new Vector3(0, 0, 0);
+        TongueTip.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+
+        LR.enabled = false;
+    }
+
+    public void ResetInputs()
+    {
+        Button_Ctrl = false;
+        Button_Space = false;
+        Button_Attack = false;
+        MoveX = 0;
+        MoveY = 0;
     }
 
     // Start is called before the first frame update
@@ -68,6 +101,9 @@ public class PlayerController : MonoBehaviour
         SR = GetComponent<SpriteRenderer>();
         BC = GetComponent<BoxCollider2D>();
         Animator = GetComponent<Animator>();
+
+        LR = gameObject.AddComponent<LineRenderer>();
+        LR.startWidth=0.01F;
 
         if(!IsVisible)
         {
@@ -80,30 +116,159 @@ public class PlayerController : MonoBehaviour
         UIGO = GameObject.Find(Constants.UI_GO_ID);
     }
 
+    public void TongueHit(Vector2 Position)
+    {
+        if (!IsTranslating) // Avoid hit duplication
+        {
+            // Start translation to the TonguthitPosition
+            IsTranslating = true;
+            IsControllable = false; // Should laready be but just in case
+            TongueHitPosition = Position;
+            // Should probably be in FixedUpdate
+            RB2D.velocity = (TongueHitPosition - new Vector2(transform.position.x, transform.position.y)).normalized * Speed * Time.deltaTime;
+        }
+    }
+
+    public void StartAttack()
+    {
+        IsAttacking = true;
+        IsControllable = false;
+        LR.enabled = true;
+
+        AttackCounter = 0;
+        IsFirstAttackFrame = true;
+        if (Player_Facing_Direction == 0)
+        {
+            AttackDirection = new Vector2(1, 0);
+        }
+        if (Player_Facing_Direction == 1)
+        {
+            AttackDirection = new Vector2(-1, 0);
+        }
+        if (Player_Facing_Direction == 2)
+        {
+            AttackDirection = new Vector2(0, 1);
+        }
+        if (Player_Facing_Direction == 3)
+        {
+            AttackDirection = new Vector2(0, -1);
+        }
+        TongueTip.transform.position = RB2D.transform.position;
+        TongueTip.GetComponent<Rigidbody2D>().velocity = AttackDirection * tongue_speed;
+        RB2D.velocity = new Vector2(0, 0);
+
+    }
+
+    public void ReturnTongue()
+    {
+        TongueTip.GetComponent<Rigidbody2D>().velocity = -AttackDirection * tongue_speed;
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        // If we were translating after a tongue hit then we reset the player state
+        if(IsTranslating)
+        {
+            ResetAttack();  
+        }
+    }
+    void ComputeFacingDirection()
+    {
+        if (Player_Facing_Direction == 0)
+        {
+            if (MoveX < 0)
+            {
+                Player_Facing_Direction = 1;
+            }
+            if (MoveX == 0 && MoveY > 0)
+            {
+                Player_Facing_Direction = 2;
+            }
+            if (MoveX == 0 && MoveY < 0)
+            {
+                Player_Facing_Direction = 3;
+            }
+        }
+        else if (Player_Facing_Direction == 1)
+        {
+            if (MoveX > 0)
+            {
+                Player_Facing_Direction = 0;
+            }
+            if (MoveX == 0 && MoveY > 0)
+            {
+                Player_Facing_Direction = 2;
+            }
+            if (MoveX == 0 && MoveY < 0)
+            {
+                Player_Facing_Direction = 3;
+            }
+        }
+        else if (Player_Facing_Direction == 2)
+        {
+            if (MoveY < 0)
+            {
+                Player_Facing_Direction = 3;
+            }
+            if (MoveY == 0 && MoveX > 0)
+            {
+                Player_Facing_Direction = 0;
+            }
+            if (MoveY == 0 && MoveX < 0)
+            {
+                Player_Facing_Direction = 1;
+            }
+        }
+        else if (Player_Facing_Direction == 3)
+        {
+            if (MoveY > 0)
+            {
+                Player_Facing_Direction = 2;
+            }
+            if (MoveY == 0 && MoveX > 0)
+            {
+                Player_Facing_Direction = 0;
+            }
+            if (MoveY == 0 && MoveX < 0)
+            {
+                Player_Facing_Direction = 1;
+            }
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         // Get inputs
-        MoveX = Input.GetAxis("Horizontal");
-        MoveY = Input.GetAxis("Vertical");
-
-        if(MoveX != 0 && MoveX < 0)
-        {
-            SR.flipX = true;
-        } else if(MoveX != 0)
-        {
-            SR.flipX = false;
-        }
-
-        Animator.SetFloat("PlayerX", MoveX);
-        Animator.SetFloat("PlayerY", MoveY);
-
+        MoveX = Input.GetAxisRaw("Horizontal");
+        MoveY = Input.GetAxisRaw("Vertical");
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
+        Button_Attack |= Input.GetButtonDown("Fire2");
+
+        
+        
+        // Animation states
+        if (IsControllable)
+        {
+            // Compute facing direction for diagonals
+            ComputeFacingDirection();
+            if (MoveX != 0 && MoveX < 0)
+            {
+                SR.flipX = true;
+            }
+            else if (MoveX != 0)
+            {
+                SR.flipX = false;
+            }
+            Animator.SetInteger("Facingdirection", Player_Facing_Direction);
+            Animator.SetBool("IsIdle", (MoveX == 0 && MoveY==0));
+            // SetInt(Form) too here?
+        }
 
         BC.enabled = true;        
 
         // > Check for player upgrade updates
+        // Space => Make the player pop
         if ( Button_Space && !acquired_existence && !!worldGO)
         {
             WorldEvents worldEvents = worldGO.GetComponent<WorldEvents>();
@@ -114,7 +279,7 @@ public class PlayerController : MonoBehaviour
             if (!!dc)
                 dc.startExitenceLine();
         }
-
+        // Ctrl => Make the Player controllable
         if ( Button_Ctrl && acquired_existence )
         {
             DialogController dc = UIGO.GetComponent<DialogController>();
@@ -122,7 +287,42 @@ public class PlayerController : MonoBehaviour
                 dc.startControlLine();
         }
 
+        // Attack timer
+        
+        if (IsAttacking)
+        {
+            // Draw tongue between Player position and TonguePosition
+            Vector3[] positions = new Vector3[2];
+            positions[0] = transform.position;
+            positions[1] = TongueTip.transform.position;
+            LR.SetPositions(positions);
 
+            AttackCounter += Time.deltaTime;
+            // If Attack is ending
+            if(AttackCounter > AttackTime)
+            {
+                ResetAttack();
+            }
+
+            if (AttackCounter > AttackTime / 2F)
+            {
+                ReturnTongue();
+            }
+        }
+        if(IsTranslating)
+        {
+            // Make the Tongue Tip move according the the Player local space
+            // Be careful not to start a new TongueHit.
+            // var HitPoint_Local = transform.InverseTransformPoint(new Vector3(TongueHitPosition.x, TongueHitPosition.y, 0));
+            // TongueTip.transform.localPosition = HitPoint_Local;
+            TongueTip.transform.position = TongueHitPosition; 
+        }
+
+        if (!IsAttacking && Input.GetKeyDown(KeyCode.K))
+        {
+            // Test attack
+            StartAttack();
+        }
     }//! Update
 
     private void FixedUpdate()
@@ -130,25 +330,25 @@ public class PlayerController : MonoBehaviour
         //Move
         if (IsControllable)
         {
-            RB2D.velocity = new Vector2(MoveX * Time.deltaTime * Speed, MoveY * Time.deltaTime * Speed);
-            
+            RB2D.velocity = new Vector2(MoveX * Time.deltaTime * Speed, MoveY * Time.deltaTime * Speed);  
         }
         if(IsVisible && Button_Ctrl)
         {
-            // TODO: Launch Dialog
             IsControllable = true;
         }
         if(!IsVisible && Button_Space)
         {
-            // TODO: Make Sprite visible
             SR.enabled = true;
             IsVisible = true;
         }
+        if (IsFirstAttackFrame)
+        {
+            
+            IsFirstAttackFrame = false;
+        }
 
+        //Debug.Log(TongueTip.GetComponent<Rigidbody2D>().position);
         // Reset inputs
-        Button_Ctrl = false;
-        Button_Space = false;
-        MoveX = 0;
-        MoveY = 0;
+        ResetInputs();
     }
 }
