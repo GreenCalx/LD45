@@ -20,14 +20,17 @@ public class TongueTipBehavior : MonoBehaviour
         //If we are not a Player we then hit either an ennemy or a wall
         if (!collision.gameObject.GetComponent<PlayerController>() && !collision.isTrigger)
         {
-            // Stop at the hit position
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            // Find Player
-            // could probably do GetComponenetInParent too
-            GameObject p = GameObject.Find(Constants.PLAYER_GO_ID);
-            var pc = p.GetComponent<PlayerController>();
-            // Launch either a hit porcedure or a translation
-            pc.TongueHit(transform.position);
+            if (!collision.gameObject.name.Contains("void"))
+            {
+                // Stop at the hit position
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                // Find Player
+                // could probably do GetComponenetInParent too
+                GameObject p = GameObject.Find(Constants.PLAYER_GO_ID);
+                var pc = p.GetComponent<PlayerController>();
+                // Launch either a hit porcedure or a translation
+                pc.TongueHit(transform.position);
+            } 
         }
     }
 
