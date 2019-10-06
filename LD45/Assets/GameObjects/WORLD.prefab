@@ -63,7 +63,8 @@ MonoBehaviour:
     type: 3}
   gridWorld1GO: {fileID: 5061766060702778869, guid: 2ea1898247111914da0d7361f4a29629,
     type: 3}
-  gridWorld2GO: {fileID: 0}
+  gridWorld2GO: {fileID: 7654426465919731448, guid: 5081cd85c33782848ad469bf339daf0e,
+    type: 3}
   currentGridWorldGO: {fileID: 0}
 --- !u!114 &1654508349212058257
 MonoBehaviour:

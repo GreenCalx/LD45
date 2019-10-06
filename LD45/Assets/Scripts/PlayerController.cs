@@ -21,7 +21,9 @@ public class PlayerController : MonoBehaviour
     public bool acquired_all_collision  = false;
     public bool acquired_tongue         = false;
 
+    // Stats
     public int level = 0;
+    public int hp = 1;
 
     // Movements
     public bool IsControllable = false;
@@ -61,6 +63,13 @@ public class PlayerController : MonoBehaviour
         Animator.SetInteger("Form", level);
     }
 
+    private void dead()
+    {
+        // GAME OVER
+        Debug.Log("GAME OVER.");
+        Destroy(this.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -83,6 +92,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check if dead
+        if (hp <= 0)
+            dead();
+
         // Get inputs
         MoveX = Input.GetAxis("Horizontal");
         MoveY = Input.GetAxis("Vertical");

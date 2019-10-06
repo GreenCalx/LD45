@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class DialogController : MonoBehaviour
 {
-    public int dialog_index;
-
     private bool dialog_is_on = false;
     private static readonly string[] lines =
     {
