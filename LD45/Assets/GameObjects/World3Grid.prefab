@@ -2330,7 +2330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead52d76c0a228e4b95a40ee8d881de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KillTimer: 0.2
+  KillTimer: 0.4
   currentTime: 0
 --- !u!1 &3783945872556073772
 GameObject:
