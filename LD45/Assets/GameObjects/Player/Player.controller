@@ -39,6 +39,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: Form
     m_EventTreshold: 1
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8518249376371258615}
   m_Solo: 0
@@ -173,6 +176,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: Facingdirection
     m_EventTreshold: 3
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsIdle
+    m_EventTreshold: 2
   - m_ConditionMode: 6
     m_ConditionEvent: Form
     m_EventTreshold: 2
@@ -296,10 +302,10 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.28571433
-  m_HasExitTime: 1
+  m_ExitTime: 0
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -713,6 +719,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: Form
     m_EventTreshold: 1
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5273533041205724425}
   m_Solo: 0
@@ -814,6 +823,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: Form
     m_EventTreshold: 2
+  - m_ConditionMode: 2
+    m_ConditionEvent: IsIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1054340463316540306}
   m_Solo: 0
@@ -836,7 +848,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Player
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -810287117012199914}
@@ -902,7 +914,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: 0.75
   m_HasExitTime: 0

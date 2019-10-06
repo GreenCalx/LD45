@@ -5106,6 +5106,36 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!60 &980462455
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980462447}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.01, y: 0.01}
+    newSize: {x: 0.6796875, y: 0.046875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0.005}
+      - {x: -0.004755283, y: 0.0015450849}
+      - {x: -0.0029389258, y: -0.004045085}
+      - {x: 0.0029389267, y: -0.0040450846}
+      - {x: 0.0047552823, y: 0.0015450856}
 --- !u!1 &1307532972
 GameObject:
   m_ObjectHideFlags: 0
@@ -5434,6 +5464,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6244170793693320343, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244170793693320343, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6244170793693320342, guid: b7fb58e8bfef85942bda92c7150aa814,
         type: 3}
       propertyPath: m_SortingOrder
@@ -5473,6 +5513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: AttackTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: IsVisible
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7fb58e8bfef85942bda92c7150aa814, type: 3}
