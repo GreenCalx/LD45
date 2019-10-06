@@ -326,7 +326,7 @@ public class PlayerController : MonoBehaviour
 
             AttackCounter += Time.deltaTime;
             // If Attack is ending
-            if(AttackCounter > AttackTime)
+            if(AttackCounter > AttackTime && !IsTranslating)
             {
                 ResetAttack();
             }

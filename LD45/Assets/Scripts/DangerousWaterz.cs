@@ -18,6 +18,12 @@ public class DangerousWaterz : MonoBehaviour
         IsRunning = true;
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        IsRunning = false;
+        currentTime = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
