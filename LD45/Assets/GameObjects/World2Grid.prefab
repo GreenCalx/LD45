@@ -115561,6 +115561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7654426465919731450}
   - component: {fileID: 7654426465919731449}
+  - component: {fileID: 1797848163959955114}
   m_Layer: 0
   m_Name: World2Grid
   m_TagString: Untagged
@@ -115618,6 +115619,19 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1797848163959955114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654426465919731448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f97ed1887cd36e94eb2f975b44723c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultState: 0
 --- !u!1 &7766958428474418055
 GameObject:
   m_ObjectHideFlags: 0
@@ -140299,7 +140313,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9210211993861302018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd8d400bcf8ea2c49bf48e4f08a312b8, type: 3}
   m_Name: 
