@@ -9,4 +9,5 @@ public class Constants
     public const string UI_GO_ID        = "UI";
 
     public const string BROKEN_BRIDGE_MAP_SUBFORM_GO_ID = "Tilemap_subform0";
+    public const string BROKEN_BRIDGE_WORLD_2_GO_ID     = "Tilemap_void_broken_bridge_2";
 }

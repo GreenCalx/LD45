@@ -48,10 +48,34 @@ public class WorldBuilder : MonoBehaviour
                 break;
             case 2:
                 // collapsed bridge voidzone repair ( deactivate subbform0 )
+                // ZONE I COMPLETE
                 repairBridgeVoidZone();
                 break;
             case 3:
+                // Graphical 1 main zone
+                break;
+            case 4:
+                // Graphical 2 main zone
+                break;
+            case 5:
+                // Graphical 3 main zone
+                break;
+            case 6:
+                // LAB 1
                 // Graphical 2 voidzone
+                break;
+            case 7:
+                // LAST FROM LAB / ZONE II COMPLETE
+                repairBridgeMainZone();
+                break;
+            case 8:
+                //
+                break;
+            case 9:
+                //
+                break;
+            case 10:
+                //
                 break;
             default:
                 break;
@@ -61,6 +85,21 @@ public class WorldBuilder : MonoBehaviour
     public void repairBridgeVoidZone()
     {
         GameObject go = GameObject.Find(Constants.BROKEN_BRIDGE_MAP_SUBFORM_GO_ID);
+        if (!!go)
+        {
+            TilemapCollider2D tc2d = go.GetComponent<TilemapCollider2D>();
+            Tilemap t = go.GetComponent<Tilemap>();
+            if (!!tc2d && !!t)
+            {
+                tc2d.enabled = false;
+                t.color = new Color(255f, 255f, 255f, 0f);
+            }
+        }
+    }
+
+    public void repairBridgeMainZone()
+    {
+        GameObject go = GameObject.Find(Constants.BROKEN_BRIDGE_WORLD_2_GO_ID);
         if (!!go)
         {
             TilemapCollider2D tc2d = go.GetComponent<TilemapCollider2D>();
