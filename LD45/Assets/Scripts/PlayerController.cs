@@ -18,7 +18,10 @@ public class PlayerController : MonoBehaviour
     public bool acquired_all_collision  = false;
     public bool acquired_tongue         = false;
 
+    // Stats
     public int level = 0;
+    public int hp = 1;
+
     // Movements
     public bool IsControllable = false;
     public bool IsVisible = false;
@@ -238,6 +241,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check if dead
+        if (hp <= 0)
+            dead();
+
         // Get inputs
         MoveX = Input.GetAxisRaw("Horizontal");
         MoveY = Input.GetAxisRaw("Vertical");
