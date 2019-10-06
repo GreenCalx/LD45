@@ -21,7 +21,7 @@ public class VoidTileMap : MonoBehaviour
             PlayerController pc = playerGO.GetComponent<PlayerController>();
             TilemapCollider2D tc2d = GetComponent<TilemapCollider2D>();
             if (!!pc && !!tc2d)
-                tc2d.enabled = pc.acquired_void_collision ;
+                tc2d.enabled = pc.acquired_void_collision && !pc.IsTranslating;
         }
     }
 }
