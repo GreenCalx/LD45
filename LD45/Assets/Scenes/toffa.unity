@@ -5174,6 +5174,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4265825326608569242, guid: 5b1022d1b2ebc8b49b319ff345a4e184,
         type: 3}
+    - target: {fileID: 754073602525313403, guid: 7659f653da8178342b3476a274e90574,
+        type: 3}
+      propertyPath: KillTimer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7659f653da8178342b3476a274e90574, type: 3}
 --- !u!1 &980462447 stripped
@@ -5569,6 +5574,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: TongueTip
+      value: 
+      objectReference: {fileID: 1307532972}
+    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: AttackTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: IsVisible
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
+        type: 3}
+      propertyPath: tongue_speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6244170793693320342, guid: b7fb58e8bfef85942bda92c7150aa814,
         type: 3}
       propertyPath: m_SortingOrder
@@ -5598,21 +5623,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.b
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
-        type: 3}
-      propertyPath: TongueTip
-      value: 
-      objectReference: {fileID: 1307532972}
-    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
-        type: 3}
-      propertyPath: AttackTime
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244170793693320347, guid: b7fb58e8bfef85942bda92c7150aa814,
-        type: 3}
-      propertyPath: IsVisible
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7fb58e8bfef85942bda92c7150aa814, type: 3}
