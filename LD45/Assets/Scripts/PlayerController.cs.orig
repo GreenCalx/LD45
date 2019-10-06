@@ -20,8 +20,11 @@ public class PlayerController : MonoBehaviour
 
     // Stats
     public int level = 0;
+<<<<<<< HEAD
+=======
     public int hp = 1;
 
+>>>>>>> a56d5ca6ec06fe8292473bcac70ea1a42c4440d2
     // Movements
     public bool IsControllable = false;
     public bool IsVisible = false;
@@ -73,11 +76,7 @@ public class PlayerController : MonoBehaviour
         Animator.SetInteger("Form", level);
     }
 
-    public void dead()
-    {
-        // GAME OVER
-    }
-
+<<<<<<< HEAD
     public void ResetAttack()
     {
         // Reset attacks value
@@ -100,6 +99,13 @@ public class PlayerController : MonoBehaviour
         Button_Attack = false;
         MoveX = 0;
         MoveY = 0;
+=======
+    private void dead()
+    {
+        // GAME OVER
+        Debug.Log("GAME OVER.");
+        Destroy(this.gameObject);
+>>>>>>> a56d5ca6ec06fe8292473bcac70ea1a42c4440d2
     }
 
     // Start is called before the first frame update
@@ -126,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
     public void TongueHit(Vector2 Position)
     {
+<<<<<<< HEAD
         if (!IsTranslating) // Avoid hit duplication
         {
             // Start translation to the TonguthitPosition
@@ -142,6 +149,15 @@ public class PlayerController : MonoBehaviour
         IsAttacking = true;
         IsControllable = false;
         LR.enabled = true;
+=======
+        // check if dead
+        if (hp <= 0)
+            dead();
+
+        // Get inputs
+        MoveX = Input.GetAxis("Horizontal");
+        MoveY = Input.GetAxis("Vertical");
+>>>>>>> a56d5ca6ec06fe8292473bcac70ea1a42c4440d2
 
         AttackCounter = 0;
         IsFirstAttackFrame = true;
@@ -246,10 +262,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // check if dead
-        if (hp <= 0)
-            dead();
-
         // Get inputs
         MoveX = Input.GetAxisRaw("Horizontal");
         MoveY = Input.GetAxisRaw("Vertical");
