@@ -60,6 +60,10 @@ public class SlimeEater : MonoBehaviour
         CapsuleCollider2D capsuleC2D = GetComponent<CapsuleCollider2D>();   // ATK
         if (!!pc && !!circleC2D && !!capsuleC2D)
         {
+            // Exit if player is just a spirit
+            if (pc.isSpirit())
+                return;
+
             Collider2D[] circle_overlaps = { }, capsule_overlaps = { };
 
             // Check in vision range

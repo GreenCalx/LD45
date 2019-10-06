@@ -78,6 +78,9 @@ public class PlayerController : MonoBehaviour
         Animator.SetInteger("Form", level);
     }
 
+    public bool isSpirit()
+    { return level < 2 ; }
+
     public void dead()
     {
         // GAME OVER

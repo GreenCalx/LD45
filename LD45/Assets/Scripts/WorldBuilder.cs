@@ -9,6 +9,8 @@ public class WorldBuilder : MonoBehaviour
     public GameObject gridWorld0GO;
     public GameObject gridWorld1GO;
     public GameObject gridWorld2GO;
+    public GameObject gridWorld3GO;
+    public GameObject gridWorld4GO;
 
     public GameObject currentGridWorldGO;
 
@@ -28,6 +30,12 @@ public class WorldBuilder : MonoBehaviour
                 break;
             case 2:
                 currentGridWorldGO = Instantiate(gridWorld2GO);
+                break;
+            case 3:
+                currentGridWorldGO = Instantiate(gridWorld3GO);
+                break;
+            case 4:
+                currentGridWorldGO = Instantiate(gridWorld4GO);
                 break;
             default:
                 break;
