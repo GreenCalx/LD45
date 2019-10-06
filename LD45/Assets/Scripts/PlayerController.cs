@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         TongueTip.transform.localPosition = new Vector3(0, 0, 0);
         TongueTip.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 
-        LR.enabled = false;
+        //LR.enabled = false;
     }
 
     public void ResetInputs()
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         Animator = GetComponent<Animator>();
 
         LR = gameObject.AddComponent<LineRenderer>();
-        LR.startWidth=0.01F;
+        LR.startWidth=0.1F;
 
         if(!IsVisible)
         {
@@ -358,16 +358,24 @@ public class PlayerController : MonoBehaviour
                 dc.startControlLine();
         }
 
-        // Attack timer
-        
-        if (IsAttacking)
+
+        if(IsAttacking || IsTranslating)
         {
             // Draw tongue between Player position and TonguePosition
             Vector3[] positions = new Vector3[2];
             positions[0] = transform.position;
             positions[1] = TongueTip.transform.position;
             LR.SetPositions(positions);
+        }
+        else
+        {
+            LR.enabled = false;
+        }
 
+        // Attack timer
+        
+        if (IsAttacking)
+        {
             AttackCounter += Time.deltaTime;
             // If Attack is ending
             Debug.Log("Update : Attack counter " + AttackCounter);

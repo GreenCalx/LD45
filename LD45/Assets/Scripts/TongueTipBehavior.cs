@@ -38,7 +38,7 @@ public class TongueTipBehavior : MonoBehaviour
     void Update()
     {
         if (!GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsAttacking
-            && GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsTranslating) 
+            && !GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsTranslating) 
            transform.position = GameObject.Find(Constants.PLAYER_GO_ID).transform.position;
     }
 }
