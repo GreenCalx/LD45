@@ -411,7 +411,8 @@ public class PlayerController : MonoBehaviour
         //Move
         if (IsControllable)
         {
-            RB2D.velocity = new Vector2(MoveX * Time.deltaTime * Speed, MoveY * Time.deltaTime * Speed);  
+            var V = new Vector2(MoveX, MoveY).normalized;
+            RB2D.velocity = new Vector2(V.x * Time.deltaTime * Speed, V.y * Time.deltaTime * Speed);  
         }
         if(IsVisible && Button_Ctrl)
         {
