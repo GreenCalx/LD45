@@ -36,7 +36,7 @@ public class SpiritNoCollidHandler : MonoBehaviour
             {
                 if ( stored_player_level != pc.level) // PLAYER LEVELD UP
                 {
-                    if (pc.level < 2) // SPIRIT
+                    if (pc.isSpirit()) // SPIRIT
                         enableAllCollisionButVoid(false);
                     else
                         enableAllCollisionButVoid(true);

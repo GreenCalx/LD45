@@ -61,7 +61,7 @@ public class SlimeEater : MonoBehaviour
         if (!!pc && !!circleC2D && !!capsuleC2D)
         {
             // Exit if player is just a spirit
-            if (pc.level < 2)
+            if (pc.isSpirit())
                 return;
 
             Collider2D[] circle_overlaps = { }, capsule_overlaps = { };
