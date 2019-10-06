@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6739615259579685295}
   - component: {fileID: 6568309220105483513}
   - component: {fileID: 195557989981316975}
+  - component: {fileID: 444404139791263413}
   m_Layer: 0
   m_Name: WorldMajorUpgrader
   m_TagString: Untagged
@@ -97,9 +98,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldGO: {fileID: 6744182305792319804, guid: f0adbd6c87b828b4788529b894763261, type: 3}
   isMajorUpgrade: 1
-  cameraGO: {fileID: 8453073853063046892, guid: 6bbe36c2a35ec85498e71047cb603d6f,
-    type: 3}
-  cameraController: {fileID: 0}
 --- !u!61 &6568309220105483513
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,3 +145,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &444404139791263413
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739615259579685280}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 161aded2579ffd54ead01acb9a6e5974, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
