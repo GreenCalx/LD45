@@ -34,6 +34,11 @@ public class SlimeEater : MonoBehaviour
             Rigidbody2D RB = GetComponent<Rigidbody2D>();
             RB.velocity = Velocity * SmoothSpeed;
         }
+        else
+        {
+            Rigidbody2D RB = GetComponent<Rigidbody2D>();
+            RB.velocity = Vector3.zero;
+        }
     }
 
     private void chaseTarget(GameObject iTarget)
@@ -42,7 +47,7 @@ public class SlimeEater : MonoBehaviour
         target = iTarget;
     }
 
-    private void stopTarget(GameObject iTarget)
+    private void stopTarget()
     {
         isChasing = false;
         target = null;
@@ -56,7 +61,6 @@ public class SlimeEater : MonoBehaviour
         if (!!pc && !!circleC2D && !!capsuleC2D)
         {
             Collider2D[] circle_overlaps = { }, capsule_overlaps = { };
-            ContactFilter2D contactFilter = new ContactFilter2D();
 
             // Check in vision range
             circle_overlaps = Physics2D.OverlapCircleAll(circleC2D.transform.position, circleC2D.radius);
@@ -99,23 +103,21 @@ public class SlimeEater : MonoBehaviour
 
         if (!!pc && !!circleC2D )
         {
-            Collider2D[] circle_overlaps = { }, capsule_overlaps = { };
-            ContactFilter2D contactFilter = new ContactFilter2D();
-            contactFilter.NoFilter();
+            Collider2D[] circle_overlaps = { };
 
             // Check in vision range
-            circleC2D.OverlapCollider(contactFilter, circle_overlaps);
-            bool triggerdByVision = false;
+            circle_overlaps = Physics2D.OverlapCircleAll(circleC2D.transform.position, circleC2D.radius);
+            bool outVision = true;
             foreach (Collider2D c in circle_overlaps)
             {
                 if (c == collision)
-                { triggerdByVision = true; break; }
+                { outVision = false; break; }
             }
 
             // Resolve
-            if (triggerdByVision)
+            if (outVision)
             {
-                stopTarget(collision.gameObject);
+                stopTarget();
                 Debug.Log(" OUT VISION ");
             }
 
