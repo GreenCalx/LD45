@@ -78,7 +78,7 @@ public class BossBehaviour : MonoBehaviour
             firedProjectiles.Add(newMissile);
             float deviation_rate = ( 0.1f * i );
             newMissile.transform.position = transform.position;
-
+            //BossBOlt newMissile
 
             
         }
