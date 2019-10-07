@@ -84,6 +84,12 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         Animator.SetInteger("Form", level);
+
+        DialogController dc = UIGO.GetComponent<DialogController>();
+        if (!!dc)
+        {
+            dc.startPlayerFormText(level);
+        }
     }
 
     public bool isSpirit()
