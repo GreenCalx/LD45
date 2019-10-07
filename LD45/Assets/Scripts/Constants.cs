@@ -14,4 +14,6 @@ public class Constants
 
     public const string BOSS_ANIMATOR_CAST1_PARM = "boss_cast_1";
     public const string BOSS_ANIMATOR_CAST2_PARM = "boss_cast_2";
+
+    public const string BREATHING_BAR_ID = "Bar position";
 }

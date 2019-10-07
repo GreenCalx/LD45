@@ -48,6 +48,11 @@ public class DangerousWaterz : MonoBehaviour
             {
                 GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().dead();
             }
+
+            var BreathingBar=  GameObject.Find(Constants.BREATHING_BAR_ID);
+            var BreathingBarScript = BreathingBar.GetComponent<BreathingBar>();
+            var TimeAsPercentInverse = 1 - (currentTime / KillTimer);
+            BreathingBarScript.currentValuePercent = TimeAsPercentInverse;
         }
         else
         {
