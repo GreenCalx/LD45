@@ -21,6 +21,8 @@ public class EndGameTrigger : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         PlayerController pc = collision.GetComponent<PlayerController>();
+        if (!pc)
+            pc = collision.GetComponentInParent<PlayerController>();
         GameObject bossGO = GameObject.Find(Constants.BOSS_GO_ID);
         bool boss_alive = (bossGO != null);
         if (!!pc && !boss_alive)
