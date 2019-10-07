@@ -16,4 +16,9 @@ public class Constants
     public const string BOSS_ANIMATOR_CAST2_PARM = "boss_cast_2";
 
     public const string BREATHING_BAR_ID = "Bar position";
+
+    // SCENES
+    public const string SPLASH_SCREEN_SCENE = "";
+    public const string MAIN_GAME_SCENE = "MAIN_GAME";
+
 }
