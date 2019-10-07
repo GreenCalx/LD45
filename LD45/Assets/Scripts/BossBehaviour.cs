@@ -65,9 +65,6 @@ public class BossBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        
-
         if (bossPulled)
         {
             elapsedTime += Time.deltaTime;
@@ -76,8 +73,8 @@ public class BossBehaviour : MonoBehaviour
                 doStuff();
                 elapsedTime -= waitTime;
 
-                updateAnimator();
             }
+            updateAnimator();
 
             checkCrystals();
 

@@ -15,7 +15,7 @@ public class TitleScreenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool spacePressed = Input.GetKey(KeyCode.Space);
+        bool spacePressed = Input.anyKey;
         if (spacePressed)
             SceneManager.LoadScene(Constants.MAIN_GAME_SCENE, LoadSceneMode.Single);
 

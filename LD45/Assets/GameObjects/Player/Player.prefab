@@ -292,17 +292,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldGO: {fileID: 0}
   UIGO: {fileID: 0}
-  acquired_existence: 0
-  acquired_void_collision: 0
-  acquired_all_collision: 0
-  acquired_tongue: 0
-  acquired_attack: 0
+  acquired_existence: 1
+  acquired_void_collision: 1
+  acquired_all_collision: 1
+  acquired_tongue: 1
+  acquired_attack: 1
   level: 0
   hp: 1
   immunity: 0.5
   IsControllable: 0
   IsVisible: 0
-  Speed: 100
+  Speed: 160
   TongueTip: {fileID: 0}
   AttackTime: 0
   tongue_speed: 1
@@ -534,7 +534,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 13c46108209e57a46818605949cafbb5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -559,7 +559,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0473935, y: -0.11824861}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -570,5 +570,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.40580487, y: 0.40350276}
   m_EdgeRadius: 0
