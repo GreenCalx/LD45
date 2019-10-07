@@ -67,7 +67,15 @@ MonoBehaviour:
     type: 3}
   gridWorld3GO: {fileID: 5023962673369234029, guid: 7659f653da8178342b3476a274e90574,
     type: 3}
-  gridWorld4GO: {fileID: 0}
+  gridWorld4GO: {fileID: 4990801100591525850, guid: 71b054213f6829941b47f5ceceff41d4,
+    type: 3}
+  paysanGO: {fileID: 7472481070285853165, guid: 0941097fe3f3da04b9c70b45fedcf1bc,
+    type: 3}
+  paysanSpawnLocations:
+  - {fileID: 2479696377483684324, guid: 4a3a89937315f1f4b8a2d2d644a02b44, type: 3}
+  - {fileID: 4089922134716015651, guid: 5271e0aefe57f4b4d8a495fff8ece9fe, type: 3}
+  - {fileID: 3332670003316969171, guid: e2b7f8e6eb2c2124791c1b66c9699477, type: 3}
+  - {fileID: 8972496196369463570, guid: a3e067dfb988f1748bc89f42d4a77c19, type: 3}
   currentGridWorldGO: {fileID: 0}
 --- !u!114 &1654508349212058257
 MonoBehaviour:

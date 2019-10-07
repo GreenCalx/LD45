@@ -6,11 +6,19 @@ using UnityEngine.Tilemaps;
 
 public class WorldBuilder : MonoBehaviour
 {
+    // -- TO SET ON EDITOR --
+
     public GameObject gridWorld0GO;
     public GameObject gridWorld1GO;
     public GameObject gridWorld2GO;
     public GameObject gridWorld3GO;
     public GameObject gridWorld4GO;
+
+
+    public GameObject paysanGO;
+    public GameObject[] paysanSpawnLocations;
+
+    // ---------------------------------
 
     public GameObject currentGridWorldGO;
 
@@ -66,11 +74,12 @@ public class WorldBuilder : MonoBehaviour
                 // Graphical 2 main zone
                 break;
             case 5:
-                // Graphical 3 main zone
+                // Graphical 3 main zone / paysan spawn
+                spawnPaysan();
                 break;
             case 6:
                 // LAB 1
-                // Graphical 2 voidzone
+                // Graphical 2
                 break;
             case 7:
                 // LAST FROM LAB / ZONE II COMPLETE
@@ -117,6 +126,25 @@ public class WorldBuilder : MonoBehaviour
                 tc2d.enabled = false;
                 t.color = new Color(255f, 255f, 255f, 0f);
             }
+        }
+    }
+
+    public void spawnPaysan()
+    {
+        if ( !!paysanGO  && (paysanSpawnLocations.Length > 0 ) )
+        {
+
+            foreach ( GameObject spawn in paysanSpawnLocations )
+            {
+                Transform t = spawn.transform;
+                GameObject newBorn = Instantiate<GameObject>(paysanGO);
+                newBorn.transform.position = t.position;
+            }
+
+        }
+        else
+        {
+            Debug.Log("CANNOT SPAWN PAYSAN");
         }
     }
 
