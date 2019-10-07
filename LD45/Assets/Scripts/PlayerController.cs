@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool acquired_void_collision = false;
     public bool acquired_all_collision  = false;
     public bool acquired_tongue         = false;
+    public bool acquired_attack         = false;
 
     // Stats
     public int level = 0;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private bool Button_Space;
     private bool Button_Ctrl;
     private bool Button_Attack;
+    private bool Button_Tongue;
     public int Player_Facing_Direction; // 0 = Right, 1 = Left, 2 = Up, 3 = Down 
     // Physics
     private Rigidbody2D RB2D;
@@ -74,6 +76,9 @@ public class PlayerController : MonoBehaviour
                 break;
             case 3:
                 acquired_tongue = true;
+                break;
+            case 4:
+                acquired_attack = true;
                 break;
             default:
                 break;
@@ -111,6 +116,7 @@ public class PlayerController : MonoBehaviour
         Button_Ctrl = false;
         Button_Space = false;
         Button_Attack = false;
+        Button_Tongue = false;
         MoveX = 0;
         MoveY = 0;
     }
@@ -149,6 +155,11 @@ public class PlayerController : MonoBehaviour
             // Should probably be in FixedUpdate
             RB2D.velocity = (TongueHitPosition - new Vector2(transform.position.x, transform.position.y)).normalized * Speed * Time.deltaTime;
         }
+    }
+
+    public void WaterDead()
+    {
+        transform.position = GameObject.Find("Player Water Spawn").transform.position;
     }
 
     public void StartAttack()
@@ -204,12 +215,16 @@ public class PlayerController : MonoBehaviour
             // If we were translating after a tongue hit then we reset the player state
             if (IsTranslating)
             {
-                IsDamageable = true;
-                immunity_timer = 0;
-                ResetAttack();
-                IsTranslating = false;
-                LastCollisionDirection = -AttackDirection.normalized;
-                transform.position = transform.position - new Vector3(0.1F * AttackDirection.normalized.x, 0.1F * AttackDirection.normalized.y, 0);
+                if (!collision.gameObject.name.Contains("void"))
+                {
+                    IsDamageable = true;
+                    immunity_timer = 0;
+                    ResetAttack();
+                    IsTranslating = false;
+                    LastCollisionDirection = -AttackDirection.normalized;
+                    transform.position = transform.position - new Vector3(0.1F * AttackDirection.normalized.x, 0.1F * AttackDirection.normalized.y, 0);
+
+                }
             }
             OncePerFrame = false;
         }
@@ -237,19 +252,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (OncePerFrame)
+        if (!collision.gameObject.name.Contains("void"))
         {
-            // If we were translating after a tongue hit then we reset the player state
-            if (IsTranslating)
+            if (OncePerFrame)
             {
-                IsDamageable = true;
-                immunity_timer = 0;
-                ResetAttack();
-                IsTranslating = false;
-                LastCollisionDirection = -AttackDirection.normalized;
-                transform.position = transform.position - new Vector3(0.2F * AttackDirection.normalized.x, 0.2F * AttackDirection.normalized.y, 0);
+                // If we were translating after a tongue hit then we reset the player state
+                if (IsTranslating)
+                {
+                    IsDamageable = true;
+                    immunity_timer = 0;
+                    ResetAttack();
+                    IsTranslating = false;
+                    LastCollisionDirection = -AttackDirection.normalized;
+                    transform.position = transform.position - new Vector3(0.2F * AttackDirection.normalized.x, 0.2F * AttackDirection.normalized.y, 0);
+                }
+                OncePerFrame = false;
             }
-            OncePerFrame = false;
         }
         //transform.position = transform.position - new Vector3(0.1F * LastCollisionDirection.x, 0.1F * LastCollisionDirection.y, 0);
     }
@@ -340,7 +358,7 @@ public class PlayerController : MonoBehaviour
         Button_Space |= Input.GetButtonDown("Jump");
         Button_Ctrl |= Input.GetButtonDown("Fire1");
         Button_Attack |= Input.GetButtonDown("Fire2");
-
+        Button_Tongue |= Input.GetButtonDown("Fire3");
         
         
         // Animation states
@@ -422,13 +440,13 @@ public class PlayerController : MonoBehaviour
             TongueTip.transform.position = TongueHitPosition; 
         }
 
-        if (!IsAttacking && !IsTranslating  && !IsRealAttack && Input.GetKeyDown(KeyCode.K))
+        if (acquired_tongue && !IsAttacking && !IsTranslating  && !IsRealAttack && Button_Tongue)
         {
             // Test attack
             StartAttack();
         }
 
-        if(!IsAttacking && !IsTranslating && !IsRealAttack && Input.GetKeyDown(KeyCode.J))
+        if(acquired_attack && !IsAttacking && !IsTranslating && !IsRealAttack && Button_Attack)
         {
             LaunchAttack();
         }

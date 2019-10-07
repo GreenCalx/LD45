@@ -6,22 +6,31 @@ public class DangerousWaterz : MonoBehaviour
 {
     public float KillTimer = 10000F;
     public float currentTime = 0;
-    private bool IsRunning = false;
+    public bool IsRunning = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        currentTime = 0;
+        if (collision.name.Contains("Player"))
+        {
+            currentTime = 0;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        IsRunning = true;
+        if (collision.name.Contains("Player"))
+        {
+            IsRunning = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        IsRunning = false;
-        currentTime = 0;
+        if (collision.name.Contains("Player"))
+        {
+            IsRunning = false;
+            currentTime = 0;
+        }
     }
 
     // Start is called before the first frame update
@@ -46,7 +55,7 @@ public class DangerousWaterz : MonoBehaviour
             }
             if (currentTime > KillTimer)
             {
-                GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().dead();
+                GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().WaterDead();
             }
 
             var BreathingBar=  GameObject.Find(Constants.BREATHING_BAR_ID);
@@ -56,6 +65,7 @@ public class DangerousWaterz : MonoBehaviour
         }
         else
         {
+            
             GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsOnWater = false;
         }
     }
