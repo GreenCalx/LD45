@@ -27,7 +27,7 @@ public class DialogController : MonoBehaviour
         "You dried the lake!\nYou can now walk back to the labyrinth and claim this universe !",
 
         // WORLD 4
-        "You found some lifeforce ! \nYou fully recovered !\nUse LEFT ALT to smite your foes."
+        "You found some lifeforce ! \nYou fully recovered !\nUse LEFT ALT to smite your foes.",
         "You killed Zombologg !\nYou successfully claimed this universe !"
     };
 
