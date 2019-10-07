@@ -110,7 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e72b02c41b491646a77526c438caf4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  annulus: 0.1
+  annulus: 0.2
   range: 1
-  strength: 1
+  strength: 3
   length_in_s: 1
+  Background: {fileID: 0}
