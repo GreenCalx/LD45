@@ -135,7 +135,6 @@ public class PlayerController : MonoBehaviour
 
     public void TongueHit(Vector2 Position)
     {
-        Debug.Log("Player: TongueHit!");
         //if (!IsTranslating) // Avoid hit duplication
         {
             // Start translation to the TonguthitPosition
@@ -150,7 +149,6 @@ public class PlayerController : MonoBehaviour
 
     public void StartAttack()
     {
-        Debug.Log("Player : SartAttack()");
         if (!IsTranslating)
         {
             IsAttacking = true;
@@ -188,17 +186,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Player: On collision enter, collider = " + collision.gameObject.name);
         if (OncePerFrame)
         {
-            Debug.Log("Player: On collision enter, collider = " + collision.gameObject.name + " ONCE");
             // If we were translating after a tongue hit then we reset the player state
             if (IsTranslating)
             {
                 IsDamageable = true;
                 immunity_timer = 0;
                 ResetAttack();
-                Debug.Log("Player: On collision enter  => Reset Attack");
                 IsTranslating = false;
                 LastCollisionDirection = -AttackDirection.normalized;
                 transform.position = transform.position - new Vector3(0.1F * AttackDirection.normalized.x, 0.1F * AttackDirection.normalized.y, 0);
@@ -207,19 +202,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void LaunchAttack()
+    {
+        var WB = GetComponentInChildren<WeaponBehavior>();
+        WB.Attack();
+        int Face = 0;
+        if (Player_Facing_Direction == 0) Face = 0;
+        if (Player_Facing_Direction == 1) Face = 2;
+        if (Player_Facing_Direction == 2) Face = 1;
+        if (Player_Facing_Direction == 3) Face = -1;
+        WB.transform.RotateAround(transform.position, new Vector3(0,0,1), Face * 90);
+        if(WB.transform.localRotation.eulerAngles.z < 0)
+        {
+            var l = WB.transform.localRotation;
+            var a = l.eulerAngles;
+            a.z += 360;
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Player: On collision stay, collider = " + collision.gameObject.name);
         if (OncePerFrame)
         {
-            Debug.Log("Player: On collision stay, collider = " + collision.gameObject.name + " ONCE");
             // If we were translating after a tongue hit then we reset the player state
             if (IsTranslating)
             {
                 IsDamageable = true;
                 immunity_timer = 0;
                 ResetAttack();
-                Debug.Log("Player: On collision stay  => Reset Attack");
                 IsTranslating = false;
                 LastCollisionDirection = -AttackDirection.normalized;
                 transform.position = transform.position - new Vector3(0.2F * AttackDirection.normalized.x, 0.2F * AttackDirection.normalized.y, 0);
@@ -378,11 +388,9 @@ public class PlayerController : MonoBehaviour
         {
             AttackCounter += Time.deltaTime;
             // If Attack is ending
-            Debug.Log("Update : Attack counter " + AttackCounter);
             if(AttackCounter > AttackTime)
             {
                 ResetAttack();
-                Debug.Log("Update : ResetAttack!");
             }
 
             if (AttackCounter > AttackTime / 2F)
@@ -403,6 +411,11 @@ public class PlayerController : MonoBehaviour
         {
             // Test attack
             StartAttack();
+        }
+
+        if(!IsAttacking && !IsTranslating && Input.GetKeyDown(KeyCode.A))
+        {
+            LaunchAttack();
         }
     }//! Update
 
