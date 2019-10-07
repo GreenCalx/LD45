@@ -122,6 +122,9 @@ public class PlayerController : MonoBehaviour
 
         LR = gameObject.AddComponent<LineRenderer>();
         LR.startWidth=0.1F;
+        LR.startColor = Color.red;
+        LR.endColor = Color.magenta;
+        LR.material = new Material(Shader.Find("Default-Line"));
 
         if(!IsVisible)
         {
