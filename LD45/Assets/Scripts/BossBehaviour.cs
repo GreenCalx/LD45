@@ -30,6 +30,7 @@ public class BossBehaviour : MonoBehaviour
 
     // PLAYER
     private GameObject playerGO;
+    private GameObject UIGO;
 
     //POWER
     public int crystals_left = 4;
@@ -46,8 +47,19 @@ public class BossBehaviour : MonoBehaviour
         spawned_swords = new List<GameObject>(shot_n_traps);
 
         playerGO = GameObject.Find(Constants.PLAYER_GO_ID);
+        UIGO = GameObject.Find(Constants.UI_GO_ID);
         shieldGO = GameObject.Find(Constants.BOSS_SHIELD_GO_ID);
         enableShield();
+    }
+
+    private void OnDestroy()
+    {
+        if (!!UIGO)
+        {
+            DialogController dc = UIGO.GetComponent<DialogController>();
+            if (!!dc)
+                dc.startBossDeadLine();
+        }
     }
 
     // Update is called once per frame
