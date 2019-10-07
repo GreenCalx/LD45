@@ -51,6 +51,30 @@ MonoBehaviour:
     Pitch: 1
     Loop: 1
     Name: MainTheme
+  - Source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: 25c184341c4efd4419bbeeb54100c0ac, type: 3}
+    Volume: 0.2
+    Pitch: 1
+    Loop: 0
+    Name: MajorUpgrade
+  - Source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: e3d51708c3198ab458c2517ccfc077ec, type: 3}
+    Volume: 0.2
+    Pitch: 1
+    Loop: 0
+    Name: TongueStart
+  - Source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: f539805604659094595d7900643d6f99, type: 3}
+    Volume: 0.2
+    Pitch: 1
+    Loop: 0
+    Name: Player_Translate
+  - Source: {fileID: 0}
+    Clip: {fileID: 8300000, guid: ec8df7bea29c4c840967b5dd5074fb96, type: 3}
+    Volume: 0.2
+    Pitch: 1
+    Loop: 0
+    Name: Player_Attack
 --- !u!114 &1089299994490629139
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -21,4 +21,10 @@ public class Constants
     public const string SPLASH_SCREEN_SCENE = "";
     public const string MAIN_GAME_SCENE = "MAIN_GAME";
 
+    public const string SOUND_TONGUE_START = "TongueStart";
+    public const string SOUND_TRANSLATING = "Player_Translate";
+    public const string SOUND_PLAYER_ATTACK = "Player_Attack";
+    public const string SOUND_MAJOR_UPGRADE = "MajorUpgrade";
+    public const string SOUND_MAIN_THEME = "MainTheme";
+
 }

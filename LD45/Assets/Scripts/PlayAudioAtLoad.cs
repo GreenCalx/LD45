@@ -11,7 +11,7 @@ public class PlayAudioAtLoad : MonoBehaviour
     {
         AM = GameObject.Find("Audio Manager");
         var AM_c = AM.GetComponent<AudioManager>();
-        AM_c.Play("MainTheme");
+        AM_c.Play(Constants.SOUND_MAIN_THEME);
     }
 
     // Update is called once per frame

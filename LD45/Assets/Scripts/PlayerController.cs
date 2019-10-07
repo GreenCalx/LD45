@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     public bool IsDamaged = false;
     public bool IsDamageable = true;
     public bool IsOnWater = false;
+    private bool RetourTongueLock = false;
     // Inputs
     private float MoveX = 0;
     private float MoveY = 0;
@@ -97,6 +98,7 @@ public class PlayerController : MonoBehaviour
         //IsTranslating = false; Attacking = false when translating= true
         IsFirstAttackFrame = false;
         AttackCounter = 0;
+        RetourTongueLock = false;
         // Reset tongue tip values
         TongueTip.transform.localPosition = new Vector3(0, 0, 0);
         TongueTip.GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
@@ -157,6 +159,9 @@ public class PlayerController : MonoBehaviour
             IsControllable = false;
             LR.enabled = true;
 
+            Debug.Log("StartAttack");
+            GameObject.Find("Audio Manager").GetComponent<AudioManager>().Play(Constants.SOUND_TONGUE_START);
+
             AttackCounter = 0;
             IsFirstAttackFrame = true;
             if (Player_Facing_Direction == 0)
@@ -183,7 +188,13 @@ public class PlayerController : MonoBehaviour
 
     public void ReturnTongue()
     {
-        TongueTip.GetComponent<Rigidbody2D>().velocity = -AttackDirection * tongue_speed;
+        if (!RetourTongueLock)
+        {
+            Debug.Log("Return Tongue");
+            TongueTip.GetComponent<Rigidbody2D>().velocity = -AttackDirection * tongue_speed;
+            GameObject.Find("Audio Manager").GetComponent<AudioManager>().Play(Constants.SOUND_TONGUE_START);
+            RetourTongueLock = true;
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
@@ -206,6 +217,7 @@ public class PlayerController : MonoBehaviour
 
     private void LaunchAttack()
     {
+        GameObject.Find("Audio Manager").GetComponent<AudioManager>().Play(Constants.SOUND_PLAYER_ATTACK);
         IsRealAttack = true;
         var WB = GetComponentInChildren<WeaponBehavior>();
         WB.Attack();
