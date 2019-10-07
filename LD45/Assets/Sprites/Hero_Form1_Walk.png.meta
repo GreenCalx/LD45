@@ -17,6 +17,12 @@ TextureImporter:
   - first:
       213: 8247980493083092454
     second: Hero_Form1_Walk_4
+  - first:
+      213: 1581077944696166890
+    second: Hero_Form1_Walk_5
+  - first:
+      213: 3115917992906239133
+    second: Hero_Form1_Walk_6
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,48 +122,6 @@ TextureImporter:
       name: Hero_Form1_Walk_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 94
-        width: 16
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9fc62b3865a09294f9cc7ca126d7fa8a
-      internalID: 4198108817305860257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Form1_Walk_1
-      rect:
-        serializedVersion: 2
-        x: 137
-        y: 93
-        width: 16
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8858803048389d24eb6e5c674c7ffcb0
-      internalID: 3016684461369024281
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hero_Form1_Walk_2
-      rect:
-        serializedVersion: 2
         x: 38
         y: 31
         width: 31
@@ -169,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c169127e56444354fba5468383f349e6
-      internalID: 7054658308520456339
+      spriteID: 000eeeaa43a38fc44bca6c7579ae440f
+      internalID: 4198108817305860257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hero_Form1_Walk_3
+      name: Hero_Form1_Walk_1
       rect:
         serializedVersion: 2
         x: 171
@@ -190,7 +154,49 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c227f70e0ab2f749862ed64dc850458
+      spriteID: a8d13eab2427850429bc641ea33556cf
+      internalID: 3016684461369024281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form1_Walk_2
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 30
+        width: 29
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a764f0d4e8186ee4d89bb75c89973102
+      internalID: 7054658308520456339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form1_Walk_3
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 30
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703647fe3a0a3b84695908a55537858f
       internalID: 2996741447001923745
       vertices: []
       indices: 
@@ -200,10 +206,10 @@ TextureImporter:
       name: Hero_Form1_Walk_4
       rect:
         serializedVersion: 2
-        x: 289
+        x: 555
         y: 30
-        width: 29
-        height: 41
+        width: 28
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -211,8 +217,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6002e8a586759dd40bc4c0ee5dee2b06
+      spriteID: 92d5957ef713caf45a0595dd3acd2fbe
       internalID: 8247980493083092454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form1_Walk_5
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 30
+        width: 28
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c5caeafa3f4a140bb80e5787695589
+      internalID: 1581077944696166890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form1_Walk_6
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 30
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae644e774508484a9ca4ffab16a4ed1
+      internalID: 3115917992906239133
       vertices: []
       indices: 
       edges: []
