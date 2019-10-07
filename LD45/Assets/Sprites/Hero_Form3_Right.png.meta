@@ -14,6 +14,30 @@ TextureImporter:
   - first:
       213: 8013677158482728374
     second: Hero_Form3_Right_3
+  - first:
+      213: -4453661130319590070
+    second: Hero_Form3_Right_4
+  - first:
+      213: -5162995341603452
+    second: Hero_Form3_Right_5
+  - first:
+      213: -5318171421481003840
+    second: Hero_Form3_Right_6
+  - first:
+      213: -6787021853742594862
+    second: Hero_Form3_Right_7
+  - first:
+      213: 4342557230922957847
+    second: Hero_Form3_Right_8
+  - first:
+      213: -735858165396081112
+    second: Hero_Form3_Right_9
+  - first:
+      213: -2408416028614681583
+    second: Hero_Form3_Right_10
+  - first:
+      213: -9163299330453298298
+    second: Hero_Form3_Right_11
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -114,9 +138,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 11
-        y: 12
+        y: 11
         width: 76
-        height: 90
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,7 +148,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8f74d0619683e4498f1519b05459209
+      spriteID: 506c994bcbdbb914e81bf0fc94f63f43
       internalID: -7635611701346785903
       vertices: []
       indices: 
@@ -135,9 +159,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 135
-        y: 24
+        y: 23
         width: 82
-        height: 82
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b94258969df7ee14d9ab7da9944393b4
+      spriteID: 437e5f3e070dbee48b5234b490c82721
       internalID: -8033394192929906770
       vertices: []
       indices: 
@@ -166,7 +190,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88ed393f9530a8d4092012046a516b61
+      spriteID: c92cc30b825348f4baaa0269376550ba
       internalID: -1606663017940872717
       vertices: []
       indices: 
@@ -179,7 +203,7 @@ TextureImporter:
         x: 392
         y: 20
         width: 80
-        height: 82
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +211,176 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd235869eca14a240a45354833b5f83d
+      spriteID: 10a33c711e06fdd4c96eb394ae10d619
       internalID: 8013677158482728374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_4
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 15
+        width: 42
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cd1d5f9f5da7f94080eb78e82de10ea
+      internalID: -4453661130319590070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_5
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 14
+        width: 42
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc9b65cb77b281f4ca0d60fc23b78816
+      internalID: -5162995341603452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_6
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 15
+        width: 48
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49df272184bc2dd4885e3444c8012b67
+      internalID: -5318171421481003840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_7
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 15
+        width: 42
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ef6ca3cd754b3b4ab386ed605c693aa
+      internalID: -6787021853742594862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_8
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 15
+        width: 43
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20d921393d844254f81f430672bfb9e3
+      internalID: 4342557230922957847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_9
+      rect:
+        serializedVersion: 2
+        x: 1190
+        y: 15
+        width: 43
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ffded4b4b47bbe47a4f958be68201fe
+      internalID: -735858165396081112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_10
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 15
+        width: 43
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f66b4a451ddedb48a429f1a4d6087ef
+      internalID: -2408416028614681583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hero_Form3_Right_11
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 16
+        width: 43
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4a935715fb5ad438723c4957b76009
+      internalID: -9163299330453298298
       vertices: []
       indices: 
       edges: []
