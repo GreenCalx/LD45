@@ -47,6 +47,7 @@ public class BossBehaviour : MonoBehaviour
 
         playerGO = GameObject.Find(Constants.PLAYER_GO_ID);
         shieldGO = GameObject.Find(Constants.BOSS_SHIELD_GO_ID);
+        enableShield();
     }
 
     // Update is called once per frame
@@ -99,14 +100,20 @@ public class BossBehaviour : MonoBehaviour
 
     public void enableShield()
     {
-
+        CircleCollider2D cc2d = GetComponent<CircleCollider2D>();
+        if (!!cc2d)
+        {
+            cc2d.enabled = false;
+        }
     }
 
     public void shieldBreak()
     {
-        if ( !!shieldGO )
+        CircleCollider2D cc2d = GetComponent<CircleCollider2D>();
+        if ( !!shieldGO && !!cc2d )
         {
-            //shieldGO.active = false;
+            cc2d.enabled = true;
+
             Destroy(shieldGO.gameObject);
         }
     }
