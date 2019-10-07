@@ -24,6 +24,7 @@ public class Constants
     // SCENES
     public const string SPLASH_SCREEN_SCENE = "";
     public const string MAIN_GAME_SCENE = "MAIN_GAME";
+    public const string END_GAME_SCENE = "END_GAME";
 
     public const string SOUND_TONGUE_START = "TongueStart";
     public const string SOUND_TRANSLATING = "Player_Translate";
