@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 LastCollisionDirection;
     public float tongue_speed = 1;
     public LineRenderer LR;
+    public bool IsRealAttack = false;
     public bool IsAttacking = false;
     public bool IsFirstAttackFrame = false;
     public bool OncePerFrame = true;
@@ -205,6 +206,7 @@ public class PlayerController : MonoBehaviour
 
     private void LaunchAttack()
     {
+        IsRealAttack = true;
         var WB = GetComponentInChildren<WeaponBehavior>();
         WB.Attack();
         int Face = 0;
@@ -408,13 +410,13 @@ public class PlayerController : MonoBehaviour
             TongueTip.transform.position = TongueHitPosition; 
         }
 
-        if (!IsAttacking && !IsTranslating && Input.GetKeyDown(KeyCode.K))
+        if (!IsAttacking && !IsTranslating  && !IsRealAttack && Input.GetKeyDown(KeyCode.K))
         {
             // Test attack
             StartAttack();
         }
 
-        if(!IsAttacking && !IsTranslating && Input.GetKeyDown(KeyCode.J))
+        if(!IsAttacking && !IsTranslating && !IsRealAttack && Input.GetKeyDown(KeyCode.J))
         {
             LaunchAttack();
         }

@@ -62,5 +62,9 @@ public class WeaponBehavior : MonoBehaviour
                 currentTime = 0; 
             }
         }   
+        if(!IsRunning)
+        {
+            GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsRealAttack = false;
+        }
     }
 }
