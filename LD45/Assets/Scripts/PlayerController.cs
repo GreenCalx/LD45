@@ -381,7 +381,7 @@ public class PlayerController : MonoBehaviour
                 SR.flipX = false;
             }
             Animator.SetInteger("Facingdirection", Player_Facing_Direction);
-            Animator.SetBool("IsIdle", (MoveX == 0 && MoveY==0));
+            Animator.SetBool("IsIdle", false);//(MoveX == 0 && MoveY==0));
             // SetInt(Form) too here?
         }
 
