@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 AttackDirection;
     private Vector2 LastCollisionDirection;
     public float tongue_speed = 1;
-    private LineRenderer LR;
+    public LineRenderer LR;
     public bool IsAttacking = false;
     public bool IsFirstAttackFrame = false;
     public bool OncePerFrame = true;
@@ -120,11 +120,8 @@ public class PlayerController : MonoBehaviour
         BC = GetComponent<BoxCollider2D>();
         Animator = GetComponent<Animator>();
 
-        LR = gameObject.AddComponent<LineRenderer>();
+        LR = gameObject.GetComponent<LineRenderer>();
         LR.startWidth=0.1F;
-        LR.startColor = Color.red;
-        LR.endColor = Color.magenta;
-        LR.material = new Material(Shader.Find("Default-Line"));
 
         if(!IsVisible)
         {
