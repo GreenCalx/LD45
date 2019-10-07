@@ -8,6 +8,7 @@ public class Constants
     public const string PLAYER_GO_ID    = "Player";
     public const string UI_GO_ID        = "UI";
     public const string BOSS_GO_ID      = "boss";
+    public const string BOSS_SHIELD_GO_ID = "boss_shield";
 
     public const string TILEMAP_VOID_GO_ID = "Tilemap_void";
     public const string BROKEN_BRIDGE_MAP_SUBFORM_GO_ID = "Tilemap_subform0";
@@ -16,6 +17,7 @@ public class Constants
     public const string BOSS_ANIMATOR_CAST1_PARM = "boss_cast_1";
     public const string BOSS_ANIMATOR_CAST2_PARM = "boss_cast_2";
     public const string SPELL2_ANIMATOR_TRIGGER_PARM = "trigger_spell";
+    
 
     public const string BREATHING_BAR_ID = "Bar position";
 

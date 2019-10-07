@@ -25,26 +25,36 @@ public class BossBehaviour : MonoBehaviour
     // TELEPORT
     public GameObject[] teleport_locations;
 
-    public const float waitTime = 3f;
+    public float waitTime = 3f;
     public float elapsedTime = 0f;
 
     // PLAYER
     private GameObject playerGO;
+
+    //POWER
+    public int crystals_left = 4;
+    private GameObject shieldGO;
+    private bool missile_upgrade_consumed = false;
 
     // Start is called before the first frame update
     void Start()
     {
         elapsedTime = 0f;
         bossPulled = false;
+        missile_upgrade_consumed = false;
         firedProjectiles = new List<GameObject>(shot_n_missiles);
         spawned_swords = new List<GameObject>(shot_n_traps);
 
         playerGO = GameObject.Find(Constants.PLAYER_GO_ID);
+        shieldGO = GameObject.Find(Constants.BOSS_SHIELD_GO_ID);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        
+
         if (bossPulled)
         {
             elapsedTime += Time.deltaTime;
@@ -56,9 +66,49 @@ public class BossBehaviour : MonoBehaviour
                 updateAnimator();
             }
 
+            checkCrystals();
+
         }//! boss pulled
 
         
+    }
+
+    public void checkCrystals()
+    {
+        switch ( crystals_left )
+        {
+            case 0:
+                shieldBreak();
+                break;
+            case 1:
+                waitTime = 2.4f;
+                break;
+            case 2:
+                if (!missile_upgrade_consumed)
+                {
+                    shot_n_missiles++;
+                    firedProjectiles = new List<GameObject>(shot_n_missiles);
+                    missile_upgrade_consumed = true;
+                }
+                break;
+            case 3:
+                waitTime = 2.7f;
+                break;
+        }
+    }
+
+    public void enableShield()
+    {
+
+    }
+
+    public void shieldBreak()
+    {
+        if ( !!shieldGO )
+        {
+            //shieldGO.active = false;
+            Destroy(shieldGO.gameObject);
+        }
     }
 
     public void doStuff()

@@ -35,6 +35,14 @@ public class WeaponBehavior : MonoBehaviour
                 Ennemy.Damage(Dmg);
             }
 
+            var boss_crystal = collision.GetComponent<BossCrystal>();
+            if (boss_crystal)
+            {
+                // Ennemy
+                boss_crystal.Damage(Dmg);
+            }
+
+
 
             SR.enabled = false;
             currentTime = 0;
