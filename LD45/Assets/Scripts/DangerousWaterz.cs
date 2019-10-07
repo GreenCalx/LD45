@@ -35,6 +35,7 @@ public class DangerousWaterz : MonoBehaviour
     {
         if (IsRunning)
         {
+            GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsOnWater = true;
             if (!GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsTranslating
                 && !GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsAttacking)
                 currentTime += Time.deltaTime;
@@ -47,6 +48,10 @@ public class DangerousWaterz : MonoBehaviour
             {
                 GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().dead();
             }
+        }
+        else
+        {
+            GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsOnWater = false;
         }
     }
 }

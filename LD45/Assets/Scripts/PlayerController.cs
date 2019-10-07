@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public bool IsDamaging = false;
     public bool IsDamaged = false;
     public bool IsDamageable = true;
+    public bool IsOnWater = false;
     // Inputs
     private float MoveX = 0;
     private float MoveY = 0;
@@ -422,7 +423,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //Move
-        if (IsControllable)
+        if (IsControllable && !IsOnWater)
         {
             var V = new Vector2(MoveX, MoveY).normalized;
             RB2D.velocity = new Vector2(V.x * Time.deltaTime * Speed, V.y * Time.deltaTime * Speed);  
