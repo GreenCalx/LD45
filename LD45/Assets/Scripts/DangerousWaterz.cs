@@ -65,7 +65,9 @@ public class DangerousWaterz : MonoBehaviour
         }
         else
         {
-            
+            var BreathingBar = GameObject.Find(Constants.BREATHING_BAR_ID);
+            var BreathingBarScript = BreathingBar.GetComponent<BreathingBar>();
+            BreathingBarScript.currentValuePercent = 0;
             GameObject.Find(Constants.PLAYER_GO_ID).GetComponent<PlayerController>().IsOnWater = false;
         }
     }
