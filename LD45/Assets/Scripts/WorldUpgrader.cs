@@ -7,6 +7,7 @@ public class WorldUpgrader : MonoBehaviour
     // WORLD
     public GameObject worldGO;
     public bool isMajorUpgrade;
+    public string SoundFX_OnPïck = "MajorUpgrade";
 
     // CAMERA
     private GameObject       cameraGO;
@@ -29,6 +30,8 @@ public class WorldUpgrader : MonoBehaviour
         // Effect
         if (!!cameraController)
             cameraController.StartRippleEffect();
+
+        GameObject.Find("Audio Manager").GetComponent<AudioManager>().Play(SoundFX_OnPïck);
 
         // Destroy go
         Destroy(this.gameObject);
