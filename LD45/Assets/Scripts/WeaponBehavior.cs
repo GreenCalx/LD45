@@ -9,6 +9,8 @@ public class WeaponBehavior : MonoBehaviour
     public float AttackTime = 0.5F;
     private float currentTime = 0F;
 
+    public int Dmg = 10;
+
     public Vector3 StartingPosition;
     public Quaternion StartingRotation;
 
@@ -24,10 +26,20 @@ public class WeaponBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // If Monster apply dmg
-        SR.enabled = false;
-        currentTime = 0;
-        IsRunning = false;
+        if (IsRunning)
+        {
+            var Ennemy = collision.GetComponent<EnnemyBehavior>();
+            if (Ennemy)
+            {
+                // Ennemy
+                Ennemy.Damage(Dmg);
+            }
+
+
+            SR.enabled = false;
+            currentTime = 0;
+            IsRunning = false;
+        }
     }
     // Start is called before the first frame update
     void Start()

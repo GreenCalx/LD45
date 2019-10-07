@@ -414,7 +414,7 @@ public class PlayerController : MonoBehaviour
             StartAttack();
         }
 
-        if(!IsAttacking && !IsTranslating && Input.GetKeyDown(KeyCode.A))
+        if(!IsAttacking && !IsTranslating && Input.GetKeyDown(KeyCode.J))
         {
             LaunchAttack();
         }
