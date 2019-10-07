@@ -75,7 +75,6 @@ public class WorldBuilder : MonoBehaviour
                 break;
             case 5:
                 // Graphical 3 main zone / paysan spawn
-                spawnPaysan();
                 break;
             case 6:
                 // LAB 1
@@ -129,24 +128,7 @@ public class WorldBuilder : MonoBehaviour
         }
     }
 
-    public void spawnPaysan()
-    {
-        if ( !!paysanGO  && (paysanSpawnLocations.Length > 0 ) )
-        {
 
-            foreach ( GameObject spawn in paysanSpawnLocations )
-            {
-                Transform t = spawn.transform;
-                GameObject newBorn = Instantiate<GameObject>(paysanGO);
-                newBorn.transform.position = t.position;
-            }
-
-        }
-        else
-        {
-            Debug.Log("CANNOT SPAWN PAYSAN");
-        }
-    }
 
     /// ------------ UNITY ------------
 
