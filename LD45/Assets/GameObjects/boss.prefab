@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1118658648891097558}
   - component: {fileID: -7984659416723807998}
   - component: {fileID: 3873111975904200458}
-  - component: {fileID: 297324314853838949}
   m_Layer: 0
   m_Name: boss
   m_TagString: Untagged
@@ -98,6 +97,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   casting_spell_1: 0
   casting_spell_2: 0
+  is_teleporting: 0
+  is_dashToPlyer: 0
+  missile_spell1: {fileID: 8183735821825275407, guid: 7b0bc7fccb7d0834b8a997149c517eb8,
+    type: 3}
+  elapsedTime: 0
 --- !u!95 &3873111975904200458
 Animator:
   serializedVersion: 3
@@ -117,15 +121,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &297324314853838949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2193529434008111808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39619b7b1f0c7bf43be19cb2b3dae89a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
