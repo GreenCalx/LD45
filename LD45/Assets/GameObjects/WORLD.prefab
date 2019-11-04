@@ -76,7 +76,8 @@ MonoBehaviour:
   - {fileID: 4089922134716015651, guid: 5271e0aefe57f4b4d8a495fff8ece9fe, type: 3}
   - {fileID: 3332670003316969171, guid: e2b7f8e6eb2c2124791c1b66c9699477, type: 3}
   - {fileID: 8972496196369463570, guid: a3e067dfb988f1748bc89f42d4a77c19, type: 3}
-  currentGridWorldGO: {fileID: 0}
+  currentGridWorldGO: {fileID: 7270250665810204223, guid: 8367b819cf6a4f844a127e94d9433cbe,
+    type: 3}
 --- !u!114 &1654508349212058257
 MonoBehaviour:
   m_ObjectHideFlags: 0
